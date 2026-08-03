@@ -11,16 +11,16 @@
     content="Автоматически обновляемые бесплатные VLESS-ключи для обхода блокировок в России. Проверенные серверы Эстония, Финляндия, Германия, Швеция, Нидерланды. Совместимо с v2rayTUN, Hiddify, Streisand." />
   <meta name="keywords"
     content="VLESS ключи, бесплатный VPN Россия, обход блокировок, VLESS бесплатно, v2ray ключи, Hiddify ключи, VPN для России 2025, VLESS checker" />
-  <meta name="author" content="tiagorrg" />
+  <meta name="author" content="Ve1megg" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://tiagorrg.github.io/vless-checker/" />
+  <link rel="canonical" href="https://ve1megg.github.io/VLESS-Checker/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="VLESS Key Checker — бесплатные рабочие ключи" />
   <meta property="og:description"
     content="Автоматически обновляемые VLESS-ключи для обхода блокировок. Проверяются каждые 30 минут." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tiagorrg.github.io/vless-checker/" />
+  <meta property="og:url" content="https://ve1megg.github.io/VLESS-Checker/" />
 
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>" />
@@ -29,16 +29,48 @@
 
 <body>
 
+  <div id="disclaimerModel" class="disclaimer-overlay">
+     <div class="disclaimer-content">
+          <h2>Дисклеймер</h2>
+          <p>[ 1. ЗАИМСТВОВАНИЕ КОДА И КОНТЕНТА ]
+В данной программе используется контент и частично заимствован код
+из открытых репозиториев разработчиков igareck (актуальные базы
+данных ключей) и tiagorrg (логика чекера и сайта).
+        Автор утилиты (Ve1megg) уважает чужой труд, и не присваивает
+        его себе и выражает огромную благодарность авторам за вклад в
+        развитие свободного интернета. Ссылки на авторов лежат в README.md файле и моего репозитория.</p>
+         <p>[ 2. ОТКАЗ ОТ ОТВЕТСТВЕННОСТИ ]
+Программа создана исключительно в ознакомительных, диагностических и образовательных целях. Разработчик (Ve1megg) НЕ несёт никакой
+ответственности за то, как именно пользователи используют данный сайт, и за любые возможные последствия его
+использования.<p>
+         <p>[ 3. ЛИЦЕНЗИЯ И ОТКРЫТЫЙ КОД ]
+Проект является абсолютно бесплатным и распространяется под
+международной лицензией MIT. Вы имеете право
+модифицировать, и распространять этот код, сохраняя упоминание
+автора.</p>
+         <p>[ 4. БЕЗОПАСНОСТЬ И КОНФИДИЦИАЛЬНОСТЬ ]
+Используя публичные VLESS-ключи, помните что они контролируются
+третьими лицами. Владельцы серверов могут анализировать ваш трафик
+и видеть ваши DNS-запросы. Настоятельно рекомендуем использовать
+публичные ключи для подключение к https:// сайтам, так как их трафик шифруется и владельцы сервера НЕ смогут перехватить ваши личные
+данные с паролями.</p>
+       <hr class="tabs-divider" />
+       <button id="acceptBtn">Продолжить</button>
+      </div>
+  </div>
+
+
+
   <h1>VLESS Key Checker</h1>
   <p class="subtitle" id="updated">Загружаем данные...</p>
 
   <div class="github-link">
-    <a href="https://github.com/tiagorrg/vless-checker" target="_blank">
+    <a href="https://github.com/Ve1megg/VLESS-Checker" target="_blank">
       <svg height="14" viewBox="0 0 16 16" fill="#666" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
       </svg>
-      tiagorrg/vless-checker
+      Ve1megg/VLESS-Checker
     </a>
   </div>
 
@@ -46,9 +78,11 @@
     <h3>Как пользоваться</h3>
     <ol>
       <li>Выбери страну для <span>обычного VPN</span> — рекомендуются Прибалтика, Финляндия, Германия, Швеция, Нидерланды, Польша</li>
-      <li>Или выбери страну в разделе <span>Белые списки</span> — только заблокированные сайты идут через VPN, <span>Россия (Москва)</span> — через московские серверы</li>
-      <li>Нажми <span>Копировать</span> и вставь ключ в приложение (Hiddify, v2rayTUN, Streisand)</li>
-      <li>Ключи обновляются автоматически <span>каждые 30 минут</span></li>
+      <li>Или выбери страну в разделе <span>Белые списки</span> — серверы с возможностью обхода "белых списков", <span>Россия (Москва)</span> — сервера для доступа к Российским сервисам из-за рубежа.</li>
+      <li>В этих разделах выберите тип <span>вашего подключения к интернету.</span></li>
+      <li>Нажмите <span>Копировать</span> и вставь ключ в приложение (Hiddify, v2rayTUN, Streisand, Happ и т.д.)</li>
+      <li>Нерабочие ключи удаляються <span>каждые 15 минут</span></li>
+      <li>Ключи обновляются автоматически <span>каждые 2 часа.</span></li>
     </ol>
   </div>
 
@@ -70,6 +104,20 @@
     <span id="collapsed-label">Нет ключей: ...</span>
   </button>
   <div class="tabs-collapsed" id="tabs-collapsed"></div>
+
+  <p class="section-label">Выберите тип вашего подключения</p>
+  <div class="tabs" id="tabs-conection-bl">
+    <button class="tab" data-type="home" onclick="selectConnectionType('bl','home')">🏡 Домашний Интернет</button>
+    <button class="tab" data-type="mobile" onclick="selectConnectionType('bl','mobile')">📱 Мобильный интернет</button>
+  </div>
+
+  <button class="collapsed-toggle" id="collapsed-toggle-conection-bl" onclick="toggleCollapsedConectionBL()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 4l4 4 4-4" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <span id="collapsed-label-conection-bl">Нет ключей: ...</span>
+  </button>
+  <div class="tabs-collapsed" id="tabs-collapsed-conection-bl"></div>
 
   <hr class="tabs-divider" />
 
@@ -93,11 +141,51 @@
   </button>
   <div class="tabs-collapsed" id="tabs-collapsed-white"></div>
 
+    <p class="section-label">Выберите тип вашего подключения</p>
+    <div class="tabs" id="tabs-conection-wl">
+      <button class="tab" data-type="home" onclick="selectConnectionType('wl','home')">🏡 Домашний Интернет</button>
+      <button class="tab" data-type="mobile" onclick="selectConnectionType('wl','mobile')">📱 Мобильный интернет</button>
+    </div>
+
+  <button class="collapsed-toggle" id="collapsed-toggle-conection-wl" onclick="toggleCollapsed()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 4l4 4 4-4" stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <span id="collapsed-label-conection-wl">Нет ключей: ...</span>
+  </button>
+  <div class="tabs-collapsed" id="tabs-collapsed-conection-wl"></div>
+
   <button class="refresh-btn" onclick="loadData()" style="margin-top:20px">Обновить</button>
 
   <div id="cards"></div>
 
   <script src="script.js?v=2"></script>
+
+  <hr class="tabs-divider" />
+
+  <div class="donation-container">
+    <h2>Поддержать автора</h2>
+    <p class="donation-subtitle">Если проект оказался полезным — буду рад поддержке рублём:</p>
+
+    <table class="donation-table">
+        <thead>
+            <tr>
+                <th>Способы</th>
+                <th>Реквизиты</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+               <td>DonationAlerts (Страница донатов)</td>
+               <td><a href="https://www.donationalerts.com/r/ve1megg" target="_blank">Ссылка на донат</a></td>
+           </tr>
+           <tr>
+               <td>DALINK</td>
+               <td><a href="https://dalink.to/ve1megg" target="_blank">Ссылка на донат</a></td>
+           </tr>
+        </tbody>
+  </table>
+</div>
 </body>
 
 </html>
