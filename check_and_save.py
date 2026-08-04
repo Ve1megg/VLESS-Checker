@@ -9,9 +9,10 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-BLACK_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt"
-BLACK_MOBILE_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt"
-WHITE_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-checked.txt"
+BLACK_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS.txt?ref_type=heads"
+BLACK_MOBILE_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS_mobile.txt?ref_type=heads"
+WHITE_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-CIDR-RU-checked.txt?ref_type=heads"
+WHITE_URL_MOBILE = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Vless-Reality-White-Lists-Rus-Mobile.txt?ref_type=heads"
 
 MAX_WORKERS = 20
 TEST_TIMEOUT = 5
@@ -143,12 +144,20 @@ def load_old_first_seen():
         with open("docs/keys.json", "r", encoding="utf-8") as f:
             old = json.load(f)
         seen = {}
+
+        def extract_keys(container):
+            if not isinstance(container, dict):
+                return
+            top_list = container.get("top10")
+            for entry in top_list:
+                if isinstance(entry, dict) and "key" in entry and "first_seen" in entry:
+                    seen[entry["key"]] = entry["first_seen"]
+
         for mode_data in old.values():
-            top_key = "top10" if "top10" in mode_data else "top5"
-            if isinstance(mode_data, dict) and top_key in mode_data:
-                for entry in mode_data[top_key]:
-                    if "key" in entry and "first_seen" in entry:
-                        seen[entry["key"]] = entry["first_seen"]
+            if isinstance(mode_data, dict):
+                extract_keys(mode_data)
+                extract_keys(mode_data.get("home"))
+                extract_keys(mode_data.get("mobile"))
         return seen
     except Exception:
         return {}
@@ -157,15 +166,13 @@ def load_old_first_seen():
 def main():
     old_first_seen = load_old_first_seen()
 
-    print("Загружаем BLACK ключи...")
-    black_keys = fetch_keys(BLACK_URL)
-    print(f"Загружено {len(black_keys)} BLACK ключей")
+    print("Загружаем BLACK (Домашний) ключи...")
+    black_home_keys = fetch_keys(BLACK_URL)
+    print(f"Загружено {len(black_home_keys)} BLACK (Домашний) ключей")
 
-    print("Загружаем BLACK mobile ключи...")
+    print("Загружаем BLACK (Мобильный) ключи...")
     black_mobile_keys = fetch_keys(BLACK_MOBILE_URL)
-    print(f"Загружено {len(black_mobile_keys)} BLACK mobile ключей")
-    black_keys = list(dict.fromkeys(black_keys + black_mobile_keys))
-    print(f"Итого уникальных BLACK ключей: {len(black_keys)}")
+    print(f"Загружено {len(black_mobile_keys)} BLACK (Мобильный) ключей")
 
     print("Загружаем WHITE ключи...")
     white_keys = fetch_keys(WHITE_URL)
@@ -175,39 +182,72 @@ def main():
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     }
 
-    for country in list(COUNTRIES.keys()):
-        filtered = filter_keys(black_keys, country)
-        print(f"[{country}] {len(filtered)} ключей, проверяем...")
-        results[country] = check_mode(filtered, old_first_seen)
-        print(f"[{country}] Рабочих: {results[country]['total_working']}/{results[country]['total']}")
+    # 1. Обычный VPN (BLACK) с разделением на home и mobile
+    vpn_modes = list(COUNTRIES.keys()) + ["other"]
+    for mode in vpn_modes:
+        filtered_home = filter_keys(black_home_keys, mode)
+        filtered_mobile = filter_keys(black_mobile_keys, mode)
 
-    other_keys = filter_keys(black_keys, "other")
-    print(f"[other] {len(other_keys)} ключей, группируем по странам...")
-    country_groups = defaultdict(list)
+        print(f"[{mode}] Проверяем Домашний ({len(filtered_home)}) и Мобильный ({len(filtered_mobile)})...")
+
+        results[mode] = {
+            "home": check_mode(filtered_home, old_first_seen),
+            "mobile": check_mode(filtered_mobile, old_first_seen)
+        }
+        print(f"[{mode}] Домашний раб.: {results[mode]['home']['total_working']}/{results[mode]['home']['total']} | "
+              f"Мобильный раб.: {results[mode]['mobile']['total_working']}/{results[mode]['mobile']['total']}")
+
+    # Группировка прочих стран для раздела other_countries
+    other_home_keys = filter_keys(black_home_keys, "other")
+    other_mobile_keys = filter_keys(black_mobile_keys, "other")
+
+    country_groups_home = defaultdict(list)
+    country_groups_mobile = defaultdict(list)
     country_flags = {}
-    for key in other_keys:
+
+    for key in other_home_keys:
         name, flag = parse_country_from_key(key)
         if not name or name.lower() in SKIP_COUNTRY_NAMES:
-            name = "Other"
-            flag = "🌍"
-        country_groups[name].append(key)
-        if name not in country_flags:
-            country_flags[name] = flag
+            name, flag = "Other", "🌍"
+        country_groups_home[name].append(key)
+        country_flags[name] = flag
 
+    for key in other_mobile_keys:
+        name, flag = parse_country_from_key(key)
+        if not name or name.lower() in SKIP_COUNTRY_NAMES:
+            name, flag = "Other", "🌍"
+        country_groups_mobile[name].append(key)
+        country_flags[name] = flag
+
+    all_other_names = set(country_groups_home.keys()) | set(country_groups_mobile.keys())
     other_countries = {}
-    for name, keys in country_groups.items():
-        print(f"  [{name}] {len(keys)} ключей, проверяем...")
-        checked = check_mode(keys, old_first_seen)
-        print(f"  [{name}] Рабочих: {checked['total_working']}/{checked['total']}")
-        checked["flag"] = country_flags[name]
-        other_countries[name] = checked
+
+    for name in all_other_names:
+        h_keys = country_groups_home[name]
+        m_keys = country_groups_mobile[name]
+        checked_home = check_mode(h_keys, old_first_seen)
+        checked_mobile = check_mode(m_keys, old_first_seen)
+
+        other_countries[name] = {
+            "flag": country_flags.get(name, "🌍"),
+            "home": checked_home,
+            "mobile": checked_mobile,
+            "total_working": checked_home["total_working"] + checked_mobile["total_working"]
+        }
     results["other_countries"] = other_countries
 
-    for mode in ("w_baltics", "w_finland", "w_germany", "w_sweden", "w_netherlands", "w_poland", "w_other", "russia"):
+    # 2. Белые списки (WHITE)
+    white_modes = ("w_baltics", "w_finland", "w_germany", "w_sweden", "w_netherlands", "w_poland", "w_other", "russia")
+    for mode in white_modes:
         filtered = filter_keys(white_keys, mode)
-        print(f"[{mode}] {len(filtered)} ключей, проверяем...")
-        results[mode] = check_mode(filtered, old_first_seen)
-        print(f"[{mode}] Рабочих: {results[mode]['total_working']}/{results[mode]['total']}")
+        print(f"[{mode}] WHITE ключей: {len(filtered)}. Проверяем...")
+
+        checked = check_mode(filtered, old_first_seen)
+        results[mode] = {
+            "home": checked,
+            "mobile": checked
+        }
+        print(f"[{mode}] Рабочих: {checked['total_working']}/{checked['total']}")
 
     os.makedirs("docs", exist_ok=True)
     with open("docs/keys.json", "w", encoding="utf-8") as f:
