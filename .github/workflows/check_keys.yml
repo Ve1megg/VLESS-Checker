@@ -6,39 +6,35 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: pages
+  group: check-keys
   cancel-in-progress: true
 
 permissions:
   contents: write
 
 jobs:
-  check-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.output.page_url }}
+  check:
     runs-on: ubuntu-latest
-     
     steps:
-       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-       - uses: actions/setup-python@v5
-         with:
-           python-version: '3.11'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-       - name: Install dependencies
-         run: pip install requests
+      - name: Install dependencies
+        run: pip install requests
 
-       - name: Run checker
-         run: python check_and_save.py
+      - name: Run checker
+        run: python check_and_save.py
 
-       - name: Setup Pages
-         uses: actions/upload-pages-artifact@v3
-         with:
-           path: 'docs'
-
-       - name: Deploy to GitHub Pages
-         id: deployment
-         uses: actions/deploy-pages@v5
-
-        
+      - name: Commit and push keys.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/keys.json
+          git diff --cached --quiet || git commit -m "chore: update keys.json [skip ci]"
+          git pull --rebase origin main
+          git push
