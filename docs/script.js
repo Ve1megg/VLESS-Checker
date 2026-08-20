@@ -188,43 +188,28 @@ function renderAll() {
           displayTime = msk.toISOString().slice(0, 16).replace('T', ' ') + ' МСК';
         }
       } catch (e) {}
-    }
-    const updatedEl = document.getElementById('updated');
-    if (updatedEl) updatedEl.textContent = 'Обновлено: ' + displayTime;
   }
+  const updatedEl = document.getElementById('updated');
+  if (updatedEl) updatedEl.textContent = 'Последнее добавления ключей: ' + displayTime;
 
-  const emptyVpn = [];
-  const emptyWhite = [];
-
-  MODES.forEach(m => {
-    const cData = data ? data[m.key] : null;
-    let hasKeys = false;
-
-    if (m.key === 'other' && data && data.other_countries) {
-      hasKeys = Object.values(data.other_countries).some(c => (c.total_working || 0) > 0);
-    } else if (cData) {
-      hasKeys = (cData.total_working || 0) > 0 ||
-                (cData.home && cData.home.total_working > 0) ||
-                (cData.mobile && cData.mobile.total_working > 0);
-    }
-
-    const tabBtn = document.querySelector(`[onclick*="'${m.key}'"]`);
-    if (!tabBtn) return;
-
-    if (hasKeys || !data) {
-      tabBtn.disabled = false;
-      tabBtn.style.display = '';
+  const deletedUtcStr = data.last_deleted_at;
+  const deletedEl = document.getElementById('last-deleted');
+  if (deletedEl) {
+    if (deletedUtcStr) {
+      let displayDeleted = deletedUtcStr;
+      try {
+        const d = new Date(deletedUtcStr.replace(' ', 'T').replace(' UTC', 'Z'));
+        if (!isNaN(d)) {
+          const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
+          displayDeleted = msk.toISOString().slice(0, 16).replace('T', ' ') + ' МСК';
+        }
+      } catch (e) {}
+    deletedEl.textContent = 'Последнее удаление и обновление данных ключей: ' + displayDeleted;
     } else {
-      const clone = tabBtn.cloneNode(true);
-      clone.disabled = true;
-      clone.style.display = '';
-      if (m.section === 'vpn') emptyVpn.push(clone);
-      else emptyWhite.push(clone);
-
-      tabBtn.disabled = true;
-      tabBtn.style.display = 'none';
+      deletedEl.textContent = '';
     }
-  });
+  }
+}
 
   setupCollapsed('tabs-collapsed', 'collapsed-toggle', 'collapsed-label', emptyVpn);
   setupCollapsed('tabs-collapsed-white', 'collapsed-toggle-white', 'collapsed-label-white', emptyWhite);
@@ -254,7 +239,7 @@ function renderActiveCard() {
 
   const modeObj = MODES.find(m => m.key === selectedCountry);
   const countryTitle = modeObj ? modeObj.label : selectedCountry;
-  const connLabel = selectedConnectionType === 'home' ? 'Домашний Интернет' : 'Мобильный интернет';
+  const connLabel = selectedConnectionType === 'home' ? 'Домашний Интернет' : 'Мобильный Интернет';
 
   if (!data || !data[selectedCountry]) {
     container.innerHTML = `<div class="card"><h2>${countryTitle} — ${connLabel}</h2><div class="key-box empty">Загрузка данных или ключи не найдены...</div></div>`;

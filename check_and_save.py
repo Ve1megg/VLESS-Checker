@@ -9,6 +9,8 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from requests import __version__
+
 BLACK_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS.txt?ref_type=heads"
 BLACK_MOBILE_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS_mobile.txt?ref_type=heads"
 WHITE_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-CIDR-RU-checked.txt?ref_type=heads"
@@ -30,8 +32,6 @@ COUNTRIES = {
 COUNTRIES_ALL_KEYWORDS = [kw for kws in COUNTRIES.values() for kw in kws]
 
 SKIP_COUNTRY_NAMES = {"anycast", "anycast-ip", "unknown"}
-
-
 
 def parse_country_from_key(key):
     """Returns (country_name, flag_emoji) parsed from the key's URL fragment."""
@@ -144,27 +144,29 @@ def load_old_first_seen():
         with open("docs/keys.json", "r", encoding="utf-8") as f:
             old = json.load(f)
         seen = {}
+        old_last_deleted = old.get("last_deleted_at")
 
         def extract_keys(container):
             if not isinstance(container, dict):
                 return
             top_list = container.get("top10")
-            for entry in top_list:
-                if isinstance(entry, dict) and "key" in entry and "first_seen" in entry:
-                    seen[entry["key"]] = entry["first_seen"]
+            if isinstance(top_list, dict):
+                for entry in top_list:
+                    if isinstance(entry, dict) and "key" in entry and "first_seen" in entry:
+                        seen[entry["key"]] = entry["first_seen"]
 
         for mode_data in old.values():
             if isinstance(mode_data, dict):
                 extract_keys(mode_data)
                 extract_keys(mode_data.get("home"))
                 extract_keys(mode_data.get("mobile"))
-        return seen
+        return seen, old_last_deleted
     except Exception:
-        return {}
+        return {}, None
 
 
 def main():
-    old_first_seen = load_old_first_seen()
+    old_first_seen, old_last_deleted = load_old_first_seen()
 
     print("Загружаем BLACK (Домашний) ключи...")
     black_home_keys = fetch_keys(BLACK_URL)
@@ -178,8 +180,11 @@ def main():
     white_keys = fetch_keys(WHITE_URL)
     print(f"Загружено {len(white_keys)} WHITE ключей")
 
+    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M UTC")
+
     results = {
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "last_deleated_at": old_last_deleted or now_utc,
     }
 
     # 1. Обычный VPN (BLACK) с разделением на home и mobile
@@ -254,7 +259,6 @@ def main():
         json.dump(results, f, ensure_ascii=False, indent=2)
 
     print("Сохранено в docs/keys.json")
-
 
 if __name__ == "__main__":
     main()
