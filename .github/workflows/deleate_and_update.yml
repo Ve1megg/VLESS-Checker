@@ -32,6 +32,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: pip install requests
+
       - name: Run delete and update
         run: python delete_and_update.py
 
