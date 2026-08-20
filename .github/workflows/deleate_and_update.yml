@@ -11,41 +11,40 @@ on:
 
     workflow_dispatch:
 
-concurrency:
-  group: keys-json-sync
-  cancel-in-progress: false
+      concurrency:
+        group: keys-json-sync
+        cancel-in-progress: false
 
-jobs:
-  cleanup:
-    if: ${{ github.event_name != 'workflow_run'  || github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
+      jobs:
+        cleanup:
+          if: ${{ github.event_name != 'workflow_run'  || github.event.workflow_run.conclusion == 'success' }}
+          runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
+          permissions:
+            contents: write
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+          steps:
+            - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
+            - name: Install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install requests
 
-      - name: Run delete and update
-        run: python delete_and_update.py
+            - name: Run delete and update
+              run: python delete_and_update.py
 
-      - name: Commit and push keys.json
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/keys.json
-          git diff --cached --quiet || git commit -m "chore: update keys.json [skip ci]"
-          git pull --rebase origin master
-          git push
-      
+            - name: Commit and push keys.json
+              run: |
+                git config user.name "github-actions[bot]"
+                git config user.email "github-actions[bot]@users.noreply.github.com"
+                git add docs/keys.json
+                git diff --cached --quiet || git commit -m "chore: update keys.json [skip ci]"
+                git pull --rebase origin master
+                git push
