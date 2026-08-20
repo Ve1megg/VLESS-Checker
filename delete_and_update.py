@@ -5,7 +5,9 @@ from urllib.parse import urlparse
 from typing import Optional, Tuple, Any
 
 #Конфигурации для проверки ключей
-from check_and_save import MAX_WORKERS, TEST_TIMEOUT, MAX_LATENCY_MS
+MAX_WORKERS = 20
+TEST_TIMEOUT = 5
+MAX_LATENCY_MS = 2000
 
 #Файл для получения ключей
 keys_file = "docs/keys.json"
