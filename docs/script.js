@@ -35,14 +35,13 @@ const MODES = [
   { key: 'russia', label: '🇷🇺 Россия (Москва)', section: 'white' },
 ];
 
-let activeSection = null; // 'vpn' | 'white' | null
+let activeSection = null;
 
 const connectionState = {
   vpn: { country: null, connectionType: null },
   white: { country: null, connectionType: null }
 };
 
-// Функция для очистки неактивной секции
 function clearOtherSection(currentSection) {
   const otherSection = currentSection === 'vpn' ? 'white' : 'vpn';
   connectionState[otherSection].country = null;
@@ -59,31 +58,71 @@ function switchMode(mode) {
   }
 }
 
+// Вспомогательная функция для получения ключа страны из кнопки
+function getCountryKeyFromBtn(btn) {
+  if (btn.dataset && btn.dataset.key) return btn.dataset.key;
+  const onclickAttr = btn.getAttribute('onclick') || '';
+  const match = onclickAttr.match(/['"]([^'"]+)['"]/);
+  return match ? match[1] : null;
+}
+
+// Проверка: есть ли у страны хотя бы один рабочий ключ
+function countryHasKeys(countryKey) {
+  if (!data) return true; // До загрузки данных считаем, что ключи есть
+  if (!data[countryKey]) return false;
+
+  const cData = data[countryKey];
+  const homeWorking = cData.home ? (cData.home.total_working > 0) : false;
+  const mobileWorking = cData.mobile ? (cData.mobile.total_working > 0) : false;
+  const directWorking = cData.total_working > 0;
+
+  return homeWorking || mobileWorking || directWorking;
+}
+
 function selectCountry(countryKey) {
   const modeObj = MODES.find(m => m.key === countryKey);
   if (!modeObj) return;
 
   activeSection = modeObj.section;
-
-  // Сбрасываем выбор в другом блоке
   clearOtherSection(activeSection);
 
   connectionState[activeSection].country = countryKey;
+
+  // Проверяем доступные типы подключения для выбранной страны
+  const cData = data ? data[countryKey] : null;
+  const availableTypes = [];
+
+  if (cData) {
+    ['home', 'mobile'].forEach(t => {
+      if (cData[t] && cData[t].total_working > 0) {
+        availableTypes.push(t);
+      }
+    });
+  }
+
+  // Если доступен только 1 тип — выбираем его автоматически
+  if (availableTypes.length === 1) {
+    connectionState[activeSection].connectionType = availableTypes[0];
+  } else {
+    // Если ранее выбранного типа нет среди доступных, сбрасываем его
+    const currentType = connectionState[activeSection].connectionType;
+    if (currentType && !availableTypes.includes(currentType)) {
+      connectionState[activeSection].connectionType = null;
+    }
+  }
 
   updateCountryTabsUI();
   updateConnectionTabsUI();
   renderActiveCard();
 }
 
-function selectConnectionType(sectionOrType, type) {
+function selectConnectionType(sectionOrType, type, event) {
   let section = sectionOrType;
   let connType = type;
 
   if (!connType) {
     connType = sectionOrType;
-
-    const evt = window.event;
-    const target = evt ? (evt.currentTarget || evt.target) : null;
+    const target = event ? (event.currentTarget || event.target) : null;
 
     if (target && target.closest('#tabs-conection-wl')) {
       section = 'white';
@@ -97,9 +136,10 @@ function selectConnectionType(sectionOrType, type) {
   if (section === 'bl') section = 'vpn';
   if (section === 'wl') section = 'white';
 
-  activeSection = section;
+  // Если страна еще не выбрана — игнорируем клик
+  if (!connectionState[section].country) return;
 
-  // Сбрасываем выбор в другом блоке
+  activeSection = section;
   clearOtherSection(activeSection);
 
   if (connectionState[section]) {
@@ -113,50 +153,93 @@ function selectConnectionType(sectionOrType, type) {
 
 function updateCountryTabsUI() {
   const activeCountry = activeSection ? connectionState[activeSection].country : null;
-  document.querySelectorAll('#tabs-countries .tab, #tabs-white .tab').forEach(btn => {
-    const onclickAttr = btn.getAttribute('onclick') || '';
-    const isCurrent = activeCountry && onclickAttr.includes(`'${activeCountry}'`);
-    btn.classList.toggle('active', !!isCurrent);
+
+  const countrySections = [
+    {
+      containerId: 'tabs-countries',
+      collapsedId: 'tabs-collapsed',
+      toggleId: 'collapsed-toggle',
+      labelId: 'collapsed-label'
+    },
+    {
+      containerId: 'tabs-white',
+      collapsedId: 'tabs-collapsed-white',
+      toggleId: 'collapsed-toggle-white',
+      labelId: 'collapsed-label-white'
+    }
+  ];
+
+  countrySections.forEach(({ containerId, collapsedId, toggleId, labelId }) => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const emptyCountries = [];
+    const buttons = container.querySelectorAll('.tab');
+
+    buttons.forEach(btn => {
+      const countryKey = getCountryKeyFromBtn(btn);
+      const isCurrent = activeCountry && countryKey === activeCountry;
+
+      btn.classList.toggle('active', !!isCurrent);
+
+      const hasKeys = countryKey ? countryHasKeys(countryKey) : true;
+
+      if (hasKeys) {
+        btn.style.display = '';
+        btn.disabled = false;
+        btn.classList.remove('disabled');
+      } else {
+        btn.style.display = 'none';
+
+        // Создаем неактивную копию страны для списка "Нет ключей"
+        const clone = btn.cloneNode(true);
+        clone.disabled = true;
+        clone.classList.add('disabled');
+        clone.style.display = '';
+        emptyCountries.push(clone);
+      }
+    });
+
+    setupCollapsed(collapsedId, toggleId, labelId, emptyCountries);
   });
 }
 
 function updateConnectionTabsUI() {
   ['vpn', 'white'].forEach(section => {
     const containerId = section === 'vpn' ? 'tabs-conection-bl' : 'tabs-conection-wl';
-    const collapsedId = section === 'vpn' ? 'tabs-collapsed-conection-bl' : 'tabs-collapsed-conection-wl';
-    const toggleId = section === 'vpn' ? 'collapsed-toggle-conection-bl' : 'collapsed-toggle-conection-wl';
-    const labelId = section === 'vpn' ? 'collapsed-label-conection-bl' : 'collapsed-label-conection-wl';
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    const emptyConnections = [];
     const currentCountry = connectionState[section].country;
     const selectedType = connectionState[section].connectionType;
 
     ['home', 'mobile'].forEach(type => {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-
       const btn = container.querySelector(`[data-type="${type}"], [onclick*="${type}"]`);
       if (!btn) return;
 
-      let hasKeys = true;
-      if (currentCountry && data && data[currentCountry] && data[currentCountry][type]) {
+      if (!currentCountry) {
+        btn.disabled = true;
+        btn.classList.add('disabled');
+        btn.classList.remove('active');
+        return;
+      }
+
+      let hasKeys = false;
+      if (data && data[currentCountry] && data[currentCountry][type]) {
         hasKeys = data[currentCountry][type].total_working > 0;
       }
 
       if (hasKeys) {
-        btn.style.display = '';
         btn.disabled = false;
+        btn.classList.remove('disabled');
         const isSelected = (type === selectedType);
         btn.classList.toggle('active', isSelected);
       } else {
-        const clone = btn.cloneNode(true);
-        clone.disabled = true;
-        emptyConnections.push(clone);
-        btn.style.display = 'none';
+        btn.disabled = true;
+        btn.classList.add('disabled');
+        btn.classList.remove('active');
       }
     });
-
-    setupCollapsed(collapsedId, toggleId, labelId, emptyConnections);
   });
 }
 
@@ -188,31 +271,29 @@ function renderAll() {
           displayTime = msk.toISOString().slice(0, 16).replace('T', ' ') + ' МСК';
         }
       } catch (e) {}
-  }
-  const updatedEl = document.getElementById('updated');
-  if (updatedEl) updatedEl.textContent = 'Последнее добавления ключей: ' + displayTime;
+    }
 
-  const deletedUtcStr = data.last_deleted_at;
-  const deletedEl = document.getElementById('last-deleted');
-  if (deletedEl) {
-    if (deletedUtcStr) {
-      let displayDeleted = deletedUtcStr;
-      try {
-        const d = new Date(deletedUtcStr.replace(' ', 'T').replace(' UTC', 'Z'));
-        if (!isNaN(d)) {
-          const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
-          displayDeleted = msk.toISOString().slice(0, 16).replace('T', ' ') + ' МСК';
-        }
-      } catch (e) {}
-    deletedEl.textContent = 'Последнее удаление и обновление данных ключей: ' + displayDeleted;
-    } else {
-      deletedEl.textContent = '';
+    const updatedEl = document.getElementById('updated');
+    if (updatedEl) updatedEl.textContent = 'Последнее добавления ключей: ' + displayTime;
+
+    const deletedUtcStr = data.last_deleted_at;
+    const deletedEl = document.getElementById('last-deleted');
+    if (deletedEl) {
+      if (deletedUtcStr) {
+        let displayDeleted = deletedUtcStr;
+        try {
+          const d = new Date(deletedUtcStr.replace(' ', 'T').replace(' UTC', 'Z'));
+          if (!isNaN(d)) {
+            const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
+            displayDeleted = msk.toISOString().slice(0, 16).replace('T', ' ') + ' МСК';
+          }
+        } catch (e) {}
+        deletedEl.textContent = 'Последнее удаление и обновление данных ключей: ' + displayDeleted;
+      } else {
+        deletedEl.textContent = '';
+      }
     }
   }
-}
-
-  setupCollapsed('tabs-collapsed', 'collapsed-toggle', 'collapsed-label', emptyVpn);
-  setupCollapsed('tabs-collapsed-white', 'collapsed-toggle-white', 'collapsed-label-white', emptyWhite);
 
   updateCountryTabsUI();
   updateConnectionTabsUI();
