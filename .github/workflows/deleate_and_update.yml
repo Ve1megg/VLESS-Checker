@@ -3,10 +3,6 @@ name: Delete and Update Keys
 on:
   schedule:
     - cron: '*/30 * * * *'
-  workflow_run:
-    workflows: ["Check and Save VLESS Keys"]
-    types:
-      - completed
   workflow_dispatch:
 
 concurrency:
