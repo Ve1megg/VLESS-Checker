@@ -130,7 +130,7 @@ import requests
 Sources = {
     #Для домашнего интернета
     "Black_vless_home": "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS.txt?ref_type=heads",
-    "Whitelist_bypass_home": "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-CIDR-RU-checked.txt?ref_type=heads",
+    "Whitelist_bypass_home": "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-SNI-RU-all.txt?ref_type=heads",
     #Для мобильного интернета
     "Black_vless_mobile": "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS_mobile.txt?ref_type=heads",
     "Whitelist_bypass_mobile": "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Vless-Reality-White-Lists-Rus-Mobile.txt?ref_type=heads"
