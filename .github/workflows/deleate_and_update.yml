@@ -2,7 +2,7 @@ name: Delete and Update Keys
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '12,42 * * * *'
   workflow_dispatch:
 
 concurrency:

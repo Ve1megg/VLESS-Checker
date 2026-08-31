@@ -35,6 +35,24 @@ const MODES = [
   { key: 'russia', label: '🇷🇺 Россия (Москва)', section: 'white' },
 ];
 
+const COUNTRY_FLAGS = {
+  'turkey': '🇹🇷', 'Турция': '🇹🇷',
+  'uk': '🇬🇧', 'Великобритания': '🇬🇧', 'Англия': '🇬🇧',
+  'usa': '🇺🇸', 'США': '🇺🇸',
+  'france': '🇫🇷', 'Франция': '🇫🇷',
+  'japan': '🇯🇵', 'Япония': '🇯🇵',
+  'kazakhstan': '🇰🇿', 'Казахстан': '🇰🇿',
+  'italy': '🇮🇹', 'Италия': '🇮🇹',
+  'spain': '🇪🇸', 'Испания': '🇪🇸',
+  'georgia': '🇬🇪', 'Грузия': '🇬🇪',
+  'armenia': '🇦🇲', 'Армения': '🇦🇲'
+};
+
+function getCountryFlag(key) {
+  if (!key) return '🌍';
+  return COUNTRY_FLAGS[key] || COUNTRY_FLAGS[key.toLowerCase()] || '🌍';
+}
+
 let activeSection = null;
 
 const connectionState = {
@@ -58,7 +76,6 @@ function switchMode(mode) {
   }
 }
 
-// Вспомогательная функция для получения ключа страны из кнопки
 function getCountryKeyFromBtn(btn) {
   if (btn.dataset && btn.dataset.key) return btn.dataset.key;
   const onclickAttr = btn.getAttribute('onclick') || '';
@@ -66,12 +83,22 @@ function getCountryKeyFromBtn(btn) {
   return match ? match[1] : null;
 }
 
-// Проверка: есть ли у страны хотя бы один рабочий ключ
 function countryHasKeys(countryKey) {
-  if (!data) return true; // До загрузки данных считаем, что ключи есть
-  if (!data[countryKey]) return false;
+  if (!data) return true;
+  const targetObj = data[countryKey] || data[countryKey + '_countries'] || (countryKey === 'other' ? data.other_countries : null);
+  if (!targetObj) return false;
 
-  const cData = data[countryKey];
+  if (countryKey === 'other' || countryKey === 'w_other') {
+    return Object.values(targetObj).some(cData => {
+      if (!cData) return false;
+      const homeWorking = cData.home ? (cData.home.total_working > 0) : false;
+      const mobileWorking = cData.mobile ? (cData.mobile.total_working > 0) : false;
+      const directWorking = cData.total_working > 0;
+      return homeWorking || mobileWorking || directWorking;
+    });
+  }
+
+  const cData = targetObj;
   const homeWorking = cData.home ? (cData.home.total_working > 0) : false;
   const mobileWorking = cData.mobile ? (cData.mobile.total_working > 0) : false;
   const directWorking = cData.total_working > 0;
@@ -88,23 +115,27 @@ function selectCountry(countryKey) {
 
   connectionState[activeSection].country = countryKey;
 
-  // Проверяем доступные типы подключения для выбранной страны
-  const cData = data ? data[countryKey] : null;
   const availableTypes = [];
-
-  if (cData) {
-    ['home', 'mobile'].forEach(t => {
-      if (cData[t] && cData[t].total_working > 0) {
-        availableTypes.push(t);
+  if (data) {
+    if (countryKey === 'other' || countryKey === 'w_other') {
+      const otherObj = data[countryKey] || data[countryKey + '_countries'] || data.other_countries || {};
+      ['home', 'mobile'].forEach(t => {
+        const hasType = Object.values(otherObj).some(sub => (sub[t] && sub[t].total_working > 0) || (sub.total_working > 0));
+        if (hasType) availableTypes.push(t);
+      });
+    } else {
+      const cData = data[countryKey];
+      if (cData) {
+        ['home', 'mobile'].forEach(t => {
+          if (cData[t] && cData[t].total_working > 0) availableTypes.push(t);
+        });
       }
-    });
+    }
   }
 
-  // Если доступен только 1 тип — выбираем его автоматически
   if (availableTypes.length === 1) {
     connectionState[activeSection].connectionType = availableTypes[0];
   } else {
-    // Если ранее выбранного типа нет среди доступных, сбрасываем его
     const currentType = connectionState[activeSection].connectionType;
     if (currentType && !availableTypes.includes(currentType)) {
       connectionState[activeSection].connectionType = null;
@@ -136,7 +167,6 @@ function selectConnectionType(sectionOrType, type, event) {
   if (section === 'bl') section = 'vpn';
   if (section === 'wl') section = 'white';
 
-  // Если страна еще не выбрана — игнорируем клик
   if (!connectionState[section].country) return;
 
   activeSection = section;
@@ -155,18 +185,8 @@ function updateCountryTabsUI() {
   const activeCountry = activeSection ? connectionState[activeSection].country : null;
 
   const countrySections = [
-    {
-      containerId: 'tabs-countries',
-      collapsedId: 'tabs-collapsed',
-      toggleId: 'collapsed-toggle',
-      labelId: 'collapsed-label'
-    },
-    {
-      containerId: 'tabs-white',
-      collapsedId: 'tabs-collapsed-white',
-      toggleId: 'collapsed-toggle-white',
-      labelId: 'collapsed-label-white'
-    }
+    { containerId: 'tabs-countries', collapsedId: 'tabs-collapsed', toggleId: 'collapsed-toggle', labelId: 'collapsed-label' },
+    { containerId: 'tabs-white', collapsedId: 'tabs-collapsed-white', toggleId: 'collapsed-toggle-white', labelId: 'collapsed-label-white' }
   ];
 
   countrySections.forEach(({ containerId, collapsedId, toggleId, labelId }) => {
@@ -191,7 +211,6 @@ function updateCountryTabsUI() {
       } else {
         btn.style.display = 'none';
 
-        // Создаем неактивную копию страны для списка "Нет ключей"
         const clone = btn.cloneNode(true);
         clone.disabled = true;
         clone.classList.add('disabled');
@@ -225,8 +244,13 @@ function updateConnectionTabsUI() {
       }
 
       let hasKeys = false;
-      if (data && data[currentCountry] && data[currentCountry][type]) {
-        hasKeys = data[currentCountry][type].total_working > 0;
+      if (data) {
+        if (currentCountry === 'other' || currentCountry === 'w_other') {
+          const otherObj = data[currentCountry] || data[currentCountry + '_countries'] || data.other_countries || {};
+          hasKeys = Object.values(otherObj).some(sub => (sub[type] && sub[type].total_working > 0) || (sub.total_working > 0));
+        } else if (data[currentCountry] && data[currentCountry][type]) {
+          hasKeys = data[currentCountry][type].total_working > 0;
+        }
       }
 
       if (hasKeys) {
@@ -274,9 +298,9 @@ function renderAll() {
     }
 
     const updatedEl = document.getElementById('updated');
-    if (updatedEl) updatedEl.textContent = 'Последнее добавления ключей: ' + displayTime;
+    if (updatedEl) updatedEl.textContent = 'Последнее добавление ключей: ' + displayTime;
 
-    const deletedUtcStr = data.last_deleted_at;
+    const deletedUtcStr = data.last_deleted_at || data.last_deleated_at;
     const deletedEl = document.getElementById('last-deleted');
     if (deletedEl) {
       if (deletedUtcStr) {
@@ -300,6 +324,33 @@ function renderAll() {
   renderActiveCard();
 }
 
+function renderCountryBlock(countryName, flag, d) {
+  const topList = d.top10 || d.top5 || [];
+  const displayFlag = flag || d.flag || getCountryFlag(countryName);
+  const totalWorking = d.total_working || 0;
+  const total = d.total || 0;
+
+  let html = '<div class="country-block" style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">';
+  html += '<h3 class="country-title" style="margin-bottom:10px; font-size:1.1em;">' + displayFlag + ' ' + countryName +
+          '<span class="country-stats" style="font-size:0.85em; opacity:0.7;"> · ' + totalWorking + ' из ' + total + '</span></h3>';
+
+  if (topList.length > 0) {
+    html += topList.map((k, i) => {
+      const provider = k.isp || k.host;
+      return '<div class="top5-item">' +
+        '<span class="host">' + (i + 1) + '. ' + provider + ':' + k.port + '</span>' +
+        '<span class="latency">' + k.latency_ms + ' мс</span>' +
+        (k.first_seen ? '<span class="uptime">добавлен ' + formatAddedTime(k.first_seen) + '</span>' : '') +
+        '<button class="copy-small" onclick="copyText(\'' + encodeKey(k.key) + '\', this)">копировать</button>' +
+        '</div>';
+    }).join('');
+  } else {
+    html += '<div class="top5-item"><span class="host">Нет рабочих ключей</span></div>';
+  }
+  html += '</div>';
+  return html;
+}
+
 function renderActiveCard() {
   const container = document.getElementById('cards');
   if (!container) return;
@@ -319,11 +370,65 @@ function renderActiveCard() {
   }
 
   const modeObj = MODES.find(m => m.key === selectedCountry);
-  const countryTitle = modeObj ? modeObj.label : selectedCountry;
+  const categoryTitle = modeObj ? modeObj.label : selectedCountry;
   const connLabel = selectedConnectionType === 'home' ? 'Домашний Интернет' : 'Мобильный Интернет';
 
+  if (selectedCountry === 'other' || selectedCountry === 'w_other') {
+    const otherContainer = data ? (
+      data[selectedCountry]
+      || data[selectedCountry + '_countries']
+      || (selectedCountry === 'other' ? data.other_countries : data.w_other_countries)
+    ) : null;
+
+    let html = `<div class="card">`;
+    html += `<h2>${categoryTitle} — ${connLabel}</h2>`;
+
+    if (!otherContainer) {
+      html += `<div class="key-box empty">Рабочих ключей не найдено.</div></div>`;
+      container.innerHTML = html;
+      return;
+    }
+
+    const countryBlocks = [];
+
+    Object.entries(otherContainer).forEach(([cKey, cVal]) => {
+      if (!cVal) return;
+
+      const targetData = (cVal[selectedConnectionType]) ? cVal[selectedConnectionType] : cVal;
+
+      const workingCount = targetData.total_working || 0;
+      const topList = targetData.top10 || targetData.top5 || [];
+
+      if (workingCount > 0 || topList.length > 0) {
+        const countryName = cVal.name || targetData.name || cKey;
+        const countryFlag = cVal.flag || targetData.flag || getCountryFlag(cKey);
+
+        countryBlocks.push({
+          name: countryName,
+          flag: countryFlag,
+          data: targetData,
+          working: workingCount
+        });
+      }
+    });
+
+    countryBlocks.sort((a, b) => b.working - a.working);
+
+    if (countryBlocks.length > 0) {
+      html += `<div class="top5" style="margin-top:15px;">`;
+      html += countryBlocks.map(item => renderCountryBlock(item.name, item.flag, item.data)).join('');
+      html += `</div>`;
+    } else {
+      html += `<div class="key-box empty">Рабочих ключей для выбранного типа подключения не найдено.</div>`;
+    }
+
+    html += `</div>`;
+    container.innerHTML = html;
+    return;
+  }
+
   if (!data || !data[selectedCountry]) {
-    container.innerHTML = `<div class="card"><h2>${countryTitle} — ${connLabel}</h2><div class="key-box empty">Загрузка данных или ключи не найдены...</div></div>`;
+    container.innerHTML = `<div class="card"><h2>${categoryTitle} — ${connLabel}</h2><div class="key-box empty">Загрузка данных или ключи не найдены...</div></div>`;
     return;
   }
 
@@ -331,7 +436,7 @@ function renderActiveCard() {
   const targetData = (cData && cData[selectedConnectionType]) ? cData[selectedConnectionType] : cData;
 
   let html = `<div class="card">`;
-  html += `<h2>${countryTitle} — ${connLabel}</h2>`;
+  html += `<h2>${categoryTitle} — ${connLabel}</h2>`;
 
   if (targetData && targetData.best) {
     html += `<div class="key-box">${targetData.best}</div>`;
@@ -348,14 +453,15 @@ function renderActiveCard() {
   const topList = targetData ? (targetData.top10 || targetData.top5 || []) : [];
   if (topList.length > 0) {
     html += `<div class="top5"><h3>ТОП быстрых:</h3>`;
-    html += topList.map((k, i) =>
-      `<div class="top5-item">` +
-      `<span class="host">${i + 1}. ${k.host}:${k.port}</span>` +
-      `<span class="latency">${k.latency_ms} мс</span>` +
-      (k.first_seen ? `<span class="uptime">в сети ${formatUptime(k.first_seen)}</span>` : '') +
-      `<button class="copy-small" onclick="copyText('${encodeKey(k.key)}', this)">копировать</button>` +
-      `</div>`
-    ).join('');
+    html += topList.map((k, i) => {
+      const provider = k.isp || k.host;
+      return `<div class="top5-item">` +
+        `<span class="host">${i + 1}. ${provider}:${k.port}</span>` +
+        `<span class="latency">${k.latency_ms} мс</span>` +
+        (k.first_seen ? `<span class="uptime">добавлен ${formatAddedTime(k.first_seen)}</span>` : '') +
+        `<button class="copy-small" onclick="copyText('${encodeKey(k.key)}', this)">копировать</button>` +
+        `</div>`;
+    }).join('');
     html += `</div>`;
   }
 
@@ -407,11 +513,21 @@ function toggleCollapsedConectionWL() {
   if (collapsed) collapsed.classList.toggle('open');
 }
 
-function formatUptime(firstSeen) {
-  const diff = Math.floor((Date.now() - new Date(firstSeen)) / 1000);
-  if (diff < 3600) return Math.floor(diff / 60) + ' мин';
-  if (diff < 86400) return Math.floor(diff / 3600) + ' ч';
-  return Math.floor(diff / 86400) + ' д';
+function formatAddedTime(firstSeen) {
+  if (!firstSeen) return '';
+  try {
+    const d = new Date(firstSeen)
+    if (isNaN(d)) return firstSeen;
+//Перевод в московское время (UTC+3)
+      const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
+      const day = String(msk.getUTCMonth() + 1).padStart(2, '0');
+      const hours = String(msk.getUTCHours()).padStart(2, '0');
+      const minutes = String(msk.getUTCMinutes()).padStart(2, '0');
+
+      return `${day}.${month} в ${hours}:${minutes}`;
+    } catch (e) {
+      return '';
+  }
 }
 
 function encodeKey(key) {

@@ -30,6 +30,39 @@ COUNTRIES_ALL_KEYWORDS = [kw for kws in COUNTRIES.values() for kw in kws]
 
 SKIP_COUNTRY_NAMES = {"anycast", "anycast-ip", "unknown"}
 
+#Кэш провайдера
+ISP_CACHE = {}
+
+def get_isp_info(host):
+#Определяем интернет провайдера
+    if host in ISP_CACHE:
+        return ISP_CACHE[host]
+
+    try:
+#Определяем ip по домену
+        ip = socket.gethostbyname(host)
+        if ip in ISP_CACHE:
+            ISP_CACHE[host] = ISP_CACHE[ip]
+            return ISP_CACHE[host]
+
+#Запрос к ip-api
+        url = f"http://ip-api.com/json/{ip}?fields=status,isp,org,as"
+        resp = requests.get(url, timeout=3)
+        if resp.status_code == 200:
+            data = resp.json()
+            if data["status"] == "success":
+#Берём название провайдера
+                isp_name = data.get("isp") or data.get("org") or "Неизвестен"
+                ISP_CACHE[ip] = isp_name
+                ISP_CACHE[host] = isp_name
+                return isp_name
+    except Exception:
+        pass
+
+    ISP_CACHE[host] = "Неизвестен"
+    return "Неизвестен"
+
+
 def parse_country_from_key(key):
     """Returns (country_name, flag_emoji) parsed from the key's URL fragment."""
     if '#' not in key:
@@ -127,6 +160,7 @@ def check_mode(keys, old_first_seen=None):
 
     for r in working:
         r["first_seen"] = old_first_seen.get(r["key"], now)
+        r["isp"] = get_isp_info(r["host"])
 
     return {
         "best": working[0]["key"] if working else None,
