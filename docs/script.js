@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("disclaimerModel");
   const acceptBtn = document.getElementById("acceptBtn");
 
@@ -11,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("vless_disclaimer_accepted", "true");
       if (modal) modal.classList.add("hidden");
     });
-  }
-});
+
+};
 
 const KEYS_URL = 'keys.json';
 let data = null;
@@ -516,17 +515,20 @@ function toggleCollapsedConectionWL() {
 function formatAddedTime(firstSeen) {
   if (!firstSeen) return '';
   try {
-    const d = new Date(firstSeen)
-    if (isNaN(d)) return firstSeen;
-//Перевод в московское время (UTC+3)
-      const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
-      const day = String(msk.getUTCMonth() + 1).padStart(2, '0');
-      const hours = String(msk.getUTCHours()).padStart(2, '0');
-      const minutes = String(msk.getUTCMinutes()).padStart(2, '0');
+    const cleanStr = String(firstSeen).replace(' ', 'T').replace(' UTC', 'Z');
+    const d = new Date(cleanStr);
+    if (isNaN(d.getTime())) return firstSeen;
 
-      return `${day}.${month} в ${hours}:${minutes}`;
-    } catch (e) {
-      return '';
+    // Перевод в московское время (UTC+3)
+    const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
+    const day = String(msk.getUTCDate()).padStart(2, '0');
+    const month = String(msk.getUTCMonth() + 1).padStart(2, '0');
+    const hours = String(msk.getUTCHours()).padStart(2, '0');
+    const minutes = String(msk.getUTCMinutes()).padStart(2, '0');
+
+    return `${day}.${month} в ${hours}:${minutes}`;
+  } catch (e) {
+    return '';
   }
 }
 
