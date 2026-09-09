@@ -3,57 +3,40 @@
   "last_deleated_at": "2026-09-09 16:33 UTC",
   "baltics": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "finland": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "germany": {
     "home": {
-      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
       "top10": [
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.4,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.4,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=android#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.8,
+          "latency_ms": 1.5,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -61,7 +44,23 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
+          "latency_ms": 1.6,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
           "latency_ms": 1.8,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.0,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -69,17 +68,41 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.8,
+          "latency_ms": 2.1,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         }
       ],
       "total_working": 5,
-      "total": 5
+      "total": 5,
+      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=android#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
     },
     "mobile": {
-      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
       "top10": [
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 1.2,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 1.3,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 1.6,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
@@ -97,95 +120,55 @@
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.9,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 5.4,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 5.6,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=android#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 5.8,
+          "latency_ms": 1.8,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         }
       ],
       "total_working": 6,
-      "total": 6
+      "total": 6,
+      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd13.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
     }
   },
   "sweden": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "netherlands": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "poland": {
     "home": {
-      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
       "top10": [
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.3,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.3,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.3,
+          "latency_ms": 1.2,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -193,39 +176,15 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh1.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.4,
+          "latency_ms": 1.5,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.4,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.4,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.4,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.4,
+          "latency_ms": 1.9,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -233,7 +192,47 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.5,
+          "latency_ms": 2.0,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.1,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.1,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.1,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.2,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.2,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -241,27 +240,27 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.5,
+          "latency_ms": 2.2,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         }
       ],
-      "total_working": 15,
-      "total": 15
+      "total_working": 10,
+      "total": 10,
+      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
     },
     "mobile": {
-      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
       "top10": [
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.3,
+          "latency_ms": 1.0,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
           "latency_ms": 1.4,
@@ -269,7 +268,7 @@
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
           "latency_ms": 1.4,
@@ -280,7 +279,7 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.4,
+          "latency_ms": 1.5,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -293,18 +292,10 @@
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.5,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.5,
+          "latency_ms": 1.6,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -312,7 +303,15 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh1.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.7,
+          "latency_ms": 1.8,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.0,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -320,7 +319,7 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.7,
+          "latency_ms": 2.0,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -328,40 +327,40 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd7.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.8,
+          "latency_ms": 2.0,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         }
       ],
-      "total_working": 15,
-      "total": 15
+      "total_working": 10,
+      "total": 10,
+      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd9.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%B5%F0%9F%87%B1%20Poland%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
     }
   },
   "other": {
     "home": {
-      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
       "top10": [
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.3,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.3,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.4,
+          "latency_ms": 1.2,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 1.5,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 1.6,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -374,26 +373,10 @@
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.6,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.6,
-          "first_seen": "2026-09-09T16:35:58Z",
-          "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.7,
+          "latency_ms": 1.9,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -401,7 +384,23 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.8,
+          "latency_ms": 1.9,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.0,
+          "first_seen": "2026-09-09T16:35:58Z",
+          "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
+          "port": 443,
+          "latency_ms": 2.2,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -409,7 +408,7 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.8,
+          "latency_ms": 2.2,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         },
@@ -417,30 +416,22 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.8,
+          "latency_ms": 2.2,
           "first_seen": "2026-09-09T16:35:58Z",
           "isp": "Fastly, Inc."
         }
       ],
-      "total_working": 65,
-      "total": 65
+      "total_working": 10,
+      "total": 10,
+      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
     },
     "mobile": {
-      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
       "top10": [
-        {
-          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-          "host": "199.232.96.15",
-          "port": 443,
-          "latency_ms": 1.2,
-          "first_seen": "2026-09-09T16:35:59Z",
-          "isp": "Fastly, Inc."
-        },
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.2,
+          "latency_ms": 6.7,
           "first_seen": "2026-09-09T16:35:59Z",
           "isp": "Fastly, Inc."
         },
@@ -448,7 +439,7 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.6,
+          "latency_ms": 6.7,
           "first_seen": "2026-09-09T16:35:59Z",
           "isp": "Fastly, Inc."
         },
@@ -456,47 +447,31 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.6,
+          "latency_ms": 6.7,
           "first_seen": "2026-09-09T16:35:59Z",
           "isp": "Fastly, Inc."
         },
         {
-          "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=safari#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
-          "host": "cfd.url0.top",
+          "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+          "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.6,
+          "latency_ms": 6.8,
           "first_seen": "2026-09-09T16:35:59Z",
-          "isp": "Cloudflare, Inc."
+          "isp": "Fastly, Inc."
         },
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 1.7,
+          "latency_ms": 6.8,
           "first_seen": "2026-09-09T16:35:59Z",
           "isp": "Fastly, Inc."
-        },
-        {
-          "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=firefox#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
-          "host": "cfd.url0.top",
-          "port": 443,
-          "latency_ms": 1.9,
-          "first_seen": "2026-09-09T16:35:59Z",
-          "isp": "Cloudflare, Inc."
-        },
-        {
-          "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=qq#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
-          "host": "cfd.url0.top",
-          "port": 443,
-          "latency_ms": 1.9,
-          "first_seen": "2026-09-09T16:35:59Z",
-          "isp": "Cloudflare, Inc."
         },
         {
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=android#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 2.1,
+          "latency_ms": 8.5,
           "first_seen": "2026-09-09T16:35:59Z",
           "isp": "Fastly, Inc."
         },
@@ -504,31 +479,47 @@
           "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
           "host": "199.232.96.15",
           "port": 443,
-          "latency_ms": 2.1,
+          "latency_ms": 8.6,
           "first_seen": "2026-09-09T16:35:59Z",
           "isp": "Fastly, Inc."
+        },
+        {
+          "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=qq#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
+          "host": "cfd.url0.top",
+          "port": 443,
+          "latency_ms": 469.1,
+          "first_seen": "2026-09-09T16:35:59Z",
+          "isp": "Cloudflare, Inc."
+        },
+        {
+          "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=safari#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
+          "host": "cfd.url0.top",
+          "port": 443,
+          "latency_ms": 469.2,
+          "first_seen": "2026-09-09T16:35:59Z",
+          "isp": "Cloudflare, Inc."
+        },
+        {
+          "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=firefox#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
+          "host": "cfd.url0.top",
+          "port": 443,
+          "latency_ms": 469.2,
+          "first_seen": "2026-09-09T16:35:59Z",
+          "isp": "Cloudflare, Inc."
         }
       ],
-      "total_working": 72,
-      "total": 72
+      "total_working": 10,
+      "total": 10,
+      "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
     }
   },
   "other_countries": {
     "France": {
       "flag": "🇫🇷",
       "home": {
-        "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
         "top10": [
           {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.1,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
             "latency_ms": 1.2,
@@ -536,34 +527,10 @@
             "isp": "Fastly, Inc."
           },
           {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.3,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.3,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.3,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.2,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
@@ -579,7 +546,39 @@
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=android#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.6,
+            "latency_ms": 1.9,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=edge#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 2.0,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 2.0,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 2.1,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 2.1,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
@@ -587,62 +586,30 @@
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.6,
+            "latency_ms": 2.1,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
           {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.6,
+            "latency_ms": 2.2,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           }
         ],
-        "total_working": 25,
-        "total": 25
+        "total_working": 10,
+        "total": 10,
+        "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
       },
       "mobile": {
-        "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
         "top10": [
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.1,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.3,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
           {
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.4,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.4,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Fastly, Inc."
-          },
-          {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "199.232.96.15",
-            "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.2,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
@@ -650,15 +617,23 @@
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd11.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.2,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
           {
-            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=safari#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.3,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh4.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 1.7,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
@@ -666,7 +641,7 @@
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.8,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
@@ -674,7 +649,23 @@
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd12.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=qq#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.8,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 1.9,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd10.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=ios#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 1.9,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           },
@@ -682,26 +673,33 @@
             "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=android#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
             "host": "199.232.96.15",
             "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 1.9,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Fastly, Inc."
+          },
+          {
+            "key": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=firefox#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
+            "host": "199.232.96.15",
+            "port": 443,
+            "latency_ms": 2.0,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Fastly, Inc."
           }
         ],
-        "total_working": 30,
-        "total": 30
-      },
-      "total_working": 55
+        "total_working": 10,
+        "total": 10,
+        "best": "vless://81145488-5fce-49e9-a3da-c4dd353180e7@199.232.96.15:443?security=tls&type=xhttp&headerType=&path=%2F&host=ovd5.global.ssl.fastly.net&mode=packet-up&sni=accounts.fastly.com&alpn=h3&fp=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
+      }
     },
     "Thailand": {
       "flag": "🇹🇭",
       "home": {
-        "best": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=firefox#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
         "top10": [
           {
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=firefox#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 1.4,
+            "latency_ms": 3.3,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           },
@@ -709,15 +707,7 @@
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=chrome#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 1.5,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Cloudflare, Inc."
-          },
-          {
-            "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=safari#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
-            "host": "cfd.url0.top",
-            "port": 443,
-            "latency_ms": 1.7,
+            "latency_ms": 3.9,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           },
@@ -725,7 +715,7 @@
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=android#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 2.0,
+            "latency_ms": 4.4,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           },
@@ -733,22 +723,7 @@
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=edge#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 2.2,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Cloudflare, Inc."
-          }
-        ],
-        "total_working": 5,
-        "total": 5
-      },
-      "mobile": {
-        "best": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=qq#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
-        "top10": [
-          {
-            "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=qq#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
-            "host": "cfd.url0.top",
-            "port": 443,
-            "latency_ms": 1.2,
+            "latency_ms": 4.7,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           },
@@ -756,15 +731,30 @@
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=safari#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 1.4,
+            "latency_ms": 10.9,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
-          },
+          }
+        ],
+        "total_working": 5,
+        "total": 5,
+        "best": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=firefox#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D"
+      },
+      "mobile": {
+        "top10": [
           {
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=chrome#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 1.5,
+            "latency_ms": 3.0,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Cloudflare, Inc."
+          },
+          {
+            "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=qq#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
+            "host": "cfd.url0.top",
+            "port": 443,
+            "latency_ms": 3.6,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           },
@@ -772,7 +762,7 @@
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=firefox#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 1.6,
+            "latency_ms": 3.9,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           },
@@ -780,34 +770,33 @@
             "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=edge#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
             "host": "cfd.url0.top",
             "port": 443,
-            "latency_ms": 1.7,
+            "latency_ms": 4.1,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Cloudflare, Inc."
+          },
+          {
+            "key": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=safari#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D",
+            "host": "cfd.url0.top",
+            "port": 443,
+            "latency_ms": 12.6,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Cloudflare, Inc."
           }
         ],
         "total_working": 5,
-        "total": 5
-      },
-      "total_working": 10
+        "total": 5,
+        "best": "vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@cfd.url0.top:443?security=tls&sni=tl.520783.xyz&type=ws&headerType=none&host=tl.520783.xyz&path=%2Fassets%2Fdist%2Fapp-update-payload.dat&fp=chrome#%F0%9F%87%B9%F0%9F%87%AD%20Thailand%2C%20Si%20Lom%20%7C%20%5BBL%5D"
+      }
     },
     "Hong Kong": {
       "flag": "🇭🇰",
       "home": {
-        "best": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=edge#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
         "top10": [
           {
-            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=edge#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
+            "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=safari#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 200.9,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://5dc6fa05-a601-aba6-7761-ecde22d2b0fc@fe1dcec0-tla000-tonrmx-8n27.hk3.hyhuawei.com:443?pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&security=reality&sni=updates.cdn-apple.com&type=tcp&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "fe1dcec0-tla000-tonrmx-8n27.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.0,
+            "latency_ms": 171.7,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -815,31 +804,7 @@
             "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=edge#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.1,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=safari#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.1,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=safari#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.3,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.3,
+            "latency_ms": 172.1,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -847,7 +812,15 @@
             "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.4,
+            "latency_ms": 172.1,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://5dc6fa05-a601-aba6-7761-ecde22d2b0fc@fe1dcec0-tla000-tonrmx-8n27.hk3.hyhuawei.com:443?pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&security=reality&sni=updates.cdn-apple.com&type=tcp&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "fe1dcec0-tla000-tonrmx-8n27.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 172.5,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -855,15 +828,7 @@
             "key": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=qq#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.6,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://5f091cbe-fb34-11ea-9777-f23c9164ca5d@5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com:443?type=tcp&security=reality&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&sni=updates.cdn-apple.com&fp=android#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 202.6,
+            "latency_ms": 172.5,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -871,46 +836,15 @@
             "key": "vless://5f091cbe-fb34-11ea-9777-f23c9164ca5d@5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com:443?type=tcp&security=reality&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&sni=updates.cdn-apple.com&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 202.7,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          }
-        ],
-        "total_working": 35,
-        "total": 35
-      },
-      "mobile": {
-        "best": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-        "top10": [
-          {
-            "key": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 200.6,
+            "latency_ms": 196.8,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
           {
-            "key": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com",
+            "key": "vless://5f091cbe-fb34-11ea-9777-f23c9164ca5d@5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com:443?type=tcp&security=reality&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&sni=updates.cdn-apple.com&fp=android#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 200.7,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.2,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://fbf91120-50ba-11ef-a203-f23c91cfbbc9@ac35c80b-tla000-tpmc23-1s3lb.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "ac35c80b-tla000-tpmc23-1s3lb.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.3,
+            "latency_ms": 196.9,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -918,7 +852,38 @@
             "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=safari#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.5,
+            "latency_ms": 224.2,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=edge#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 224.3,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 224.4,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          }
+        ],
+        "total_working": 10,
+        "total": 10,
+        "best": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=safari#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D"
+      },
+      "mobile": {
+        "top10": [
+          {
+            "key": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 154.3,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -926,7 +891,15 @@
             "key": "vless://5f091cbe-fb34-11ea-9777-f23c9164ca5d@5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com:443?pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&security=reality&sni=updates.cdn-apple.com&type=tcp&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "5c8575f4-tl4g00-u1vxv2-v3c2.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.5,
+            "latency_ms": 154.3,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 154.4,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -934,23 +907,7 @@
             "key": "vless://5f091cbe-fb34-11ea-9777-f23c9164ca5d@e283de09-tla000-u1vxv2-v3c2.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=chrome#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "e283de09-tla000-u1vxv2-v3c2.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.6,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.7,
-            "first_seen": "2026-09-09T16:36:00Z",
-            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
-          },
-          {
-            "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=qq#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
-            "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
-            "port": 443,
-            "latency_ms": 201.7,
+            "latency_ms": 164.0,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           },
@@ -958,127 +915,168 @@
             "key": "vless://5f091cbe-fb34-11ea-9777-f23c9164ca5d@e283de09-tla000-u1vxv2-v3c2.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=qq#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
             "host": "e283de09-tla000-u1vxv2-v3c2.hk3.hyhuawei.com",
             "port": 443,
-            "latency_ms": 201.7,
+            "latency_ms": 164.0,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 172.2,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://2ec58858-976b-11ea-82ef-f23c9164ca5d@19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=qq#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "19a3f02e-tla000-tl6lcj-tng5.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 172.3,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://fbf91120-50ba-11ef-a203-f23c91cfbbc9@ac35c80b-tla000-tpmc23-1s3lb.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "ac35c80b-tla000-tpmc23-1s3lb.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 172.5,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=safari#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 172.6,
+            "first_seen": "2026-09-09T16:36:00Z",
+            "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+          },
+          {
+            "key": "vless://526a1128-7487-11ee-9bca-f23c913c8d2b@a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D",
+            "host": "a95a660c-tla000-tpw4i4-1pckg.hk3.hyhuawei.com",
+            "port": 443,
+            "latency_ms": 172.9,
             "first_seen": "2026-09-09T16:36:00Z",
             "isp": "Hong Kong Telecommunications (HKT) Limited Mass Internet"
           }
         ],
-        "total_working": 37,
-        "total": 37
-      },
-      "total_working": 72
+        "total_working": 10,
+        "total": 10,
+        "best": "vless://40fb1315-191a-11ed-b0ca-f23c91cfbbc9@7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com:443?security=reality&type=tcp&packetEncoding=xudp&sni=updates.cdn-apple.com&pbk=bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Jat%20Min%20Chuen%20%7C%20%5BBL%5D"
+      }
     }
   },
   "w_baltics": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "w_finland": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "w_germany": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "w_sweden": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "w_netherlands": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "w_poland": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "w_other": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
   },
   "russia": {
     "home": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     },
     "mobile": {
-      "best": null,
       "top10": [],
       "total_working": 0,
-      "total": 0
+      "total": 0,
+      "best": null
     }
-  }
+  },
+  "last_deleted_at": "2026-09-09 19:27 UTC"
 }
