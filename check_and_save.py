@@ -1,4 +1,5 @@
 import re
+import atexit
 import requests
 import socket
 import time
@@ -8,50 +9,114 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-BLACK_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS.txt?ref_type=heads"
-BLACK_MOBILE_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS_mobile.txt?ref_type=heads"
-WHITE_URL = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-SNI-RU-all.txt?ref_type=heads"
-WHITE_URL_MOBILE = "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Vless-Reality-White-Lists-Rus-Mobile.txt?ref_type=heads"
+BLACK_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS.txt"
+BLACK_MOBILE_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt"
+WHITE_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/WHITE-CIDR-RU-checked.txt"
+WHITE_URL_MOBILE = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt"
 
 MAX_WORKERS = 20
 TEST_TIMEOUT = 5
 MAX_LATENCY_MS = 2000
 
+CACHE_FILE = "docs/cache_map.json"
+KEYS_FILE = "docs/keys.json"
+
 COUNTRIES = {
-    "baltics":     ["lithuania", "estonia", "latvia"],
-    "finland":     ["finland"],
-    "germany":     ["germany"],
-    "sweden":      ["sweden"],
+    "baltics": ["lithuania", "estonia", "latvia"],
+    "finland": ["finland"],
+    "germany": ["germany"],
+    "sweden": ["sweden"],
     "netherlands": ["netherlands"],
-    "poland":      ["poland"],
+    "poland": ["poland"],
 }
 
 COUNTRIES_ALL_KEYWORDS = [kw for kws in COUNTRIES.values() for kw in kws]
-
 SKIP_COUNTRY_NAMES = {"anycast", "anycast-ip", "unknown"}
 
-#Кэш провайдера
+# Кэш провайдера
 ISP_CACHE = {}
 
+
+def extract_first_seen_data(data):
+    """
+    Рекурсивно обойдет любую структуру (dict/list)
+    и соберет словарь вида {"vless://...": "2026-09-11T14:07:27Z"}
+    """
+    cache_map = {}
+
+    def parse_node(node):
+        if isinstance(node, dict):
+            if "key" in node and "first_seen" in node:
+                cache_map[node["key"]] = node["first_seen"]
+            for value in node.values():
+                parse_node(value)
+        elif isinstance(node, list):
+            for item in node:
+                parse_node(item)
+
+    parse_node(data)
+    return cache_map
+
+
+def load_cache_map():
+    """
+    Загружает кэш из docs/cache_map.json.
+    Если файла нет, восстанавливает базу из существующего docs/keys.json.
+    """
+    last_deleted = None
+    cache_map = {}
+
+    # 1. Пробуем прочитать готовый cache_map.json
+    if os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, "r", encoding="utf-8") as f:
+                cache_map = json.load(f)
+            print(f"Успешно загружен {CACHE_FILE} (записей: {len(cache_map)})")
+        except Exception as e:
+            print(f"Ошибка чтения {CACHE_FILE}: {e}")
+
+    # 2. Если cache_map еще нет, но есть keys.json — вытаскиваем историю оттуда
+    if os.path.exists(KEYS_FILE):
+        try:
+            with open(KEYS_FILE, "r", encoding="utf-8") as f:
+                old_keys = json.load(f)
+            last_deleted = old_keys.get("last_deleated_at") or old_keys.get("last_deleted_at")
+
+            if not cache_map:
+                cache_map = extract_first_seen_data(old_keys)
+                print(f"[LOG] Восстановлен cache_map из {KEYS_FILE} (записей: {len(cache_map)})")
+        except Exception as e:
+            print(f"[LOG ERROR] Ошибка чтения {KEYS_FILE}: {e}")
+
+    return cache_map, last_deleted
+
+
+def save_cache_map(cache_map):
+    """Сохраняет актуальную карту кэша в docs/cache_map.json"""
+    os.makedirs("docs", exist_ok=True)
+    try:
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(cache_map, f, ensure_ascii=False, indent=2)
+        print(f"Кэш успешно сохранён в {CACHE_FILE} (всего ключей: {len(cache_map)})")
+    except Exception as e:
+        print(f"Ошибка сохранения кэша: {e}")
+
+
 def get_isp_info(host):
-#Определяем интернет провайдера
     if host in ISP_CACHE:
         return ISP_CACHE[host]
 
     try:
-#Определяем ip по домену
         ip = socket.gethostbyname(host)
         if ip in ISP_CACHE:
             ISP_CACHE[host] = ISP_CACHE[ip]
             return ISP_CACHE[host]
 
-#Запрос к ip-api
         url = f"http://ip-api.com/json/{ip}?fields=status,isp,org,as"
         resp = requests.get(url, timeout=3)
         if resp.status_code == 200:
             data = resp.json()
             if data["status"] == "success":
-#Берём название провайдера
                 isp_name = data.get("isp") or data.get("org") or "Неизвестен"
                 ISP_CACHE[ip] = isp_name
                 ISP_CACHE[host] = isp_name
@@ -64,7 +129,6 @@ def get_isp_info(host):
 
 
 def parse_country_from_key(key):
-    """Returns (country_name, flag_emoji) parsed from the key's URL fragment."""
     if '#' not in key:
         return None, None
     from urllib.parse import unquote
@@ -92,7 +156,8 @@ def filter_keys(keys, mode):
         keywords = COUNTRIES[mode]
         return [k for k in keys if any(kw in k.lower() for kw in keywords)]
     if mode == "other":
-        return [k for k in keys if not any(kw in k.lower() for kw in COUNTRIES_ALL_KEYWORDS) and "russia" not in k.lower()]
+        return [k for k in keys if
+                not any(kw in k.lower() for kw in COUNTRIES_ALL_KEYWORDS) and "russia" not in k.lower()]
     if mode == "russia":
         return [k for k in keys if "russia" in k.lower()]
     if mode.startswith("w_"):
@@ -101,7 +166,8 @@ def filter_keys(keys, mode):
             keywords = COUNTRIES[country]
             return [k for k in keys if any(kw in k.lower() for kw in keywords)]
         if country == "other":
-            return [k for k in keys if not any(kw in k.lower() for kw in COUNTRIES_ALL_KEYWORDS) and "russia" not in k.lower()]
+            return [k for k in keys if
+                    not any(kw in k.lower() for kw in COUNTRIES_ALL_KEYWORDS) and "russia" not in k.lower()]
     return keys
 
 
@@ -144,9 +210,7 @@ def test_key(key):
     return best
 
 
-def check_mode(keys, old_first_seen=None):
-    if old_first_seen is None:
-        old_first_seen = {}
+def check_mode(keys, cache_map):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     working = []
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -158,8 +222,15 @@ def check_mode(keys, old_first_seen=None):
 
     working.sort(key=lambda x: x["latency_ms"])
 
+    # Привязываем first_seen из кэша либо записываем новое время
     for r in working:
-        r["first_seen"] = old_first_seen.get(r["key"], now)
+        key_str = r["key"]
+        if key_str in cache_map:
+            r["first_seen"] = cache_map[key_str]
+        else:
+            r["first_seen"] = now
+            cache_map[key_str] = now  # Сразу добавляем новый рабочий ключ в кэш
+
         r["isp"] = get_isp_info(r["host"])
 
     return {
@@ -170,34 +241,10 @@ def check_mode(keys, old_first_seen=None):
     }
 
 
-def load_old_first_seen():
-    try:
-        with open("docs/keys.json", "r", encoding="utf-8") as f:
-            old = json.load(f)
-        seen = {}
-        old_last_deleted = old.get("last_deleted_at")
-
-        def extract_keys(container):
-            if not isinstance(container, dict):
-                return
-            top_list = container.get("top10")
-            if isinstance(top_list, dict):
-                for entry in top_list:
-                    if isinstance(entry, dict) and "key" in entry and "first_seen" in entry:
-                        seen[entry["key"]] = entry["first_seen"]
-
-        for mode_data in old.values():
-            if isinstance(mode_data, dict):
-                extract_keys(mode_data)
-                extract_keys(mode_data.get("home"))
-                extract_keys(mode_data.get("mobile"))
-        return seen, old_last_deleted
-    except Exception:
-        return {}, None
-
-
 def main():
-    old_first_seen, old_last_deleted = load_old_first_seen()
+    # Загружаем текущий кэш
+    cache_map, old_last_deleted = load_cache_map()
+    initial_cache_size = len(cache_map)
 
     print("Загружаем BLACK (Домашний) ключи...")
     black_home_keys = fetch_keys(BLACK_URL)
@@ -211,10 +258,10 @@ def main():
     white_keys = fetch_keys(WHITE_URL)
     print(f"Загружено {len(white_keys)} WHITE ключей")
 
-    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M UTC")
+    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
     results = {
-        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "updated_at": now_utc,
         "last_deleated_at": old_last_deleted or now_utc,
     }
 
@@ -227,8 +274,8 @@ def main():
         print(f"[{mode}] Проверяем Домашний ({len(filtered_home)}) и Мобильный ({len(filtered_mobile)})...")
 
         results[mode] = {
-            "home": check_mode(filtered_home, old_first_seen),
-            "mobile": check_mode(filtered_mobile, old_first_seen)
+            "home": check_mode(filtered_home, cache_map),
+            "mobile": check_mode(filtered_mobile, cache_map)
         }
         print(f"[{mode}] Домашний раб.: {results[mode]['home']['total_working']}/{results[mode]['home']['total']} | "
               f"Мобильный раб.: {results[mode]['mobile']['total_working']}/{results[mode]['mobile']['total']}")
@@ -261,8 +308,8 @@ def main():
     for name in all_other_names:
         h_keys = country_groups_home[name]
         m_keys = country_groups_mobile[name]
-        checked_home = check_mode(h_keys, old_first_seen)
-        checked_mobile = check_mode(m_keys, old_first_seen)
+        checked_home = check_mode(h_keys, cache_map)
+        checked_mobile = check_mode(m_keys, cache_map)
 
         other_countries[name] = {
             "flag": country_flags.get(name, "🌍"),
@@ -278,18 +325,31 @@ def main():
         filtered = filter_keys(white_keys, mode)
         print(f"[{mode}] WHITE ключей: {len(filtered)}. Проверяем...")
 
-        checked = check_mode(filtered, old_first_seen)
+        checked = check_mode(filtered, cache_map)
         results[mode] = {
             "home": checked,
             "mobile": checked
         }
         print(f"[{mode}] Рабочих: {checked['total_working']}/{checked['total']}")
 
+    # Сохраняем итоговый keys.json
     os.makedirs("docs", exist_ok=True)
-    with open("docs/keys.json", "w", encoding="utf-8") as f:
+    with open(KEYS_FILE, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
+    print(f"Результаты сохранены в {KEYS_FILE}")
 
-    print("Сохранено в docs/keys.json")
+    # Сохраняем обновленный cache_map.json
+    save_cache_map(cache_map)
+
+    new_added = len(cache_map) - initial_cache_size
+
+    def cleanup():
+        if os.path.exists(CACHE_FILE):
+            os.remove(CACHE_FILE)
+
+    atexit.register(cleanup)
+
+    print("Работа завершена!")
 
 if __name__ == "__main__":
     main()

@@ -1,18 +1,19 @@
-  const modal = document.getElementById("disclaimerModel");
-  const acceptBtn = document.getElementById("acceptBtn");
+// 1. Модальное окно дисклеймера
+const modal = document.getElementById("disclaimerModel");
+const acceptBtn = document.getElementById("acceptBtn");
 
-  if (localStorage.getItem("vless_disclaimer_accepted") === "true") {
+if (localStorage.getItem("vless_disclaimer_accepted") === "true") {
+  if (modal) modal.classList.add("hidden");
+}
+
+if (acceptBtn) {
+  acceptBtn.addEventListener("click", () => {
+    localStorage.setItem("vless_disclaimer_accepted", "true");
     if (modal) modal.classList.add("hidden");
-  }
+  });
+}
 
-  if (acceptBtn) {
-    acceptBtn.addEventListener("click", () => {
-      localStorage.setItem("vless_disclaimer_accepted", "true");
-      if (modal) modal.classList.add("hidden");
-    });
-
-};
-
+// 2. Константы и конфигурация
 const KEYS_URL = 'keys.json';
 let data = null;
 
@@ -83,21 +84,8 @@ function getCountryKeyFromBtn(btn) {
 }
 
 function countryHasKeys(countryKey) {
-  if (!data) return true;
-  const targetObj = data[countryKey] || data[countryKey + '_countries'] || (countryKey === 'other' ? data.other_countries : null);
-  if (!targetObj) return false;
-
-  if (countryKey === 'other' || countryKey === 'w_other') {
-    return Object.values(targetObj).some(cData => {
-      if (!cData) return false;
-      const homeWorking = cData.home ? (cData.home.total_working > 0) : false;
-      const mobileWorking = cData.mobile ? (cData.mobile.total_working > 0) : false;
-      const directWorking = cData.total_working > 0;
-      return homeWorking || mobileWorking || directWorking;
-    });
-  }
-
-  const cData = targetObj;
+  if (!data || !data[countryKey]) return false;
+  const cData = data[countryKey];
   const homeWorking = cData.home ? (cData.home.total_working > 0) : false;
   const mobileWorking = cData.mobile ? (cData.mobile.total_working > 0) : false;
   const directWorking = cData.total_working > 0;
@@ -115,21 +103,11 @@ function selectCountry(countryKey) {
   connectionState[activeSection].country = countryKey;
 
   const availableTypes = [];
-  if (data) {
-    if (countryKey === 'other' || countryKey === 'w_other') {
-      const otherObj = data[countryKey] || data[countryKey + '_countries'] || data.other_countries || {};
-      ['home', 'mobile'].forEach(t => {
-        const hasType = Object.values(otherObj).some(sub => (sub[t] && sub[t].total_working > 0) || (sub.total_working > 0));
-        if (hasType) availableTypes.push(t);
-      });
-    } else {
-      const cData = data[countryKey];
-      if (cData) {
-        ['home', 'mobile'].forEach(t => {
-          if (cData[t] && cData[t].total_working > 0) availableTypes.push(t);
-        });
-      }
-    }
+  if (data && data[countryKey]) {
+    const cData = data[countryKey];
+    ['home', 'mobile'].forEach(t => {
+      if (cData[t] && cData[t].total_working > 0) availableTypes.push(t);
+    });
   }
 
   if (availableTypes.length === 1) {
@@ -243,13 +221,8 @@ function updateConnectionTabsUI() {
       }
 
       let hasKeys = false;
-      if (data) {
-        if (currentCountry === 'other' || currentCountry === 'w_other') {
-          const otherObj = data[currentCountry] || data[currentCountry + '_countries'] || data.other_countries || {};
-          hasKeys = Object.values(otherObj).some(sub => (sub[type] && sub[type].total_working > 0) || (sub.total_working > 0));
-        } else if (data[currentCountry] && data[currentCountry][type]) {
-          hasKeys = data[currentCountry][type].total_working > 0;
-        }
+      if (data && data[currentCountry] && data[currentCountry][type]) {
+        hasKeys = data[currentCountry][type].total_working > 0;
       }
 
       if (hasKeys) {
@@ -266,6 +239,44 @@ function updateConnectionTabsUI() {
   });
 }
 
+// ПРЕОБРАЗОВАНИЕ ДАННЫХ: превращаем "Остальное" в стандартную страну
+function normalizeData(rawData) {
+  if (!rawData) return rawData;
+
+  ['other', 'w_other'].forEach(otherKey => {
+    const sourceKey = otherKey === 'other' ? 'other_countries' : 'w_other_countries';
+    const subCountries = rawData[sourceKey] || rawData[otherKey];
+
+    if (subCountries) {
+      rawData[otherKey] = { home: {}, mobile: {} };
+
+      ['home', 'mobile'].forEach(type => {
+        let allKeys = [];
+
+        Object.values(subCountries).forEach(cVal => {
+          if (!cVal) return;
+          const target = cVal[type] || cVal;
+          const list = target.top10 || target.top5 || [];
+          allKeys.push(...list);
+        });
+
+        // Сортировка всех собранных ключей по пингу
+        allKeys.sort((a, b) => (a.latency_ms || 999) - (b.latency_ms || 999));
+
+        rawData[otherKey][type] = {
+          best: allKeys[0] ? allKeys[0].key : null,
+          top10: allKeys.slice(0, 10),
+          total_working: allKeys.length,
+          total: allKeys.length
+        };
+      });
+    }
+  });
+
+  return rawData;
+}
+
+// Загрузка данных
 async function loadData() {
   const updatedEl = document.getElementById('updated');
   if (updatedEl) {
@@ -274,7 +285,10 @@ async function loadData() {
   try {
     const resp = await fetch(KEYS_URL + '?t=' + Date.now());
     if (!resp.ok) throw new Error('Ошибка загрузки');
-    data = await resp.json();
+
+    const rawData = await resp.json();
+    data = normalizeData(rawData); // Нормализуем сразу после загрузки
+
     renderAll();
   } catch (e) {
     if (updatedEl) updatedEl.textContent = 'Ошибка загрузки данных';
@@ -323,33 +337,23 @@ function renderAll() {
   renderActiveCard();
 }
 
-function renderCountryBlock(countryName, flag, d) {
-  const topList = d.top10 || d.top5 || [];
-  const displayFlag = flag || d.flag || getCountryFlag(countryName);
-  const totalWorking = d.total_working || 0;
-  const total = d.total || 0;
+// Генератор карточки ключа
+function renderKeyItemHTML(k, index) {
+  const provider = k.isp || k.host || 'Unknown';
+  const port = k.port ? `:${k.port}` : '';
+  const addedTime = k.first_seen ? `<span class="uptime">добавлен ${formatAddedTime(k.first_seen)}</span>` : '';
 
-  let html = '<div class="country-block" style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">';
-  html += '<h3 class="country-title" style="margin-bottom:10px; font-size:1.1em;">' + displayFlag + ' ' + countryName +
-          '<span class="country-stats" style="font-size:0.85em; opacity:0.7;"> · ' + totalWorking + ' из ' + total + '</span></h3>';
-
-  if (topList.length > 0) {
-    html += topList.map((k, i) => {
-      const provider = k.isp || k.host;
-      return '<div class="top5-item">' +
-        '<span class="host">' + (i + 1) + '. ' + provider + ':' + k.port + '</span>' +
-        '<span class="latency">' + k.latency_ms + ' мс</span>' +
-        (k.first_seen ? '<span class="uptime">добавлен ' + formatAddedTime(k.first_seen) + '</span>' : '') +
-        '<button class="copy-small" onclick="copyText(\'' + encodeKey(k.key) + '\', this)">копировать</button>' +
-        '</div>';
-    }).join('');
-  } else {
-    html += '<div class="top5-item"><span class="host">Нет рабочих ключей</span></div>';
-  }
-  html += '</div>';
-  return html;
+  return `
+    <div class="top5-item">
+      <span class="host">${index + 1}. ${provider}${port}</span>
+      <span class="latency">${k.latency_ms} мс</span>
+      ${addedTime}
+      <button class="copy-small" onclick="copyText('${encodeKey(k.key)}', this)">копировать</button>
+    </div>
+  `;
 }
 
+// Отрисовка активной карточки (теперь универсальная для ВСЕХ стран)
 function renderActiveCard() {
   const container = document.getElementById('cards');
   if (!container) return;
@@ -371,60 +375,6 @@ function renderActiveCard() {
   const modeObj = MODES.find(m => m.key === selectedCountry);
   const categoryTitle = modeObj ? modeObj.label : selectedCountry;
   const connLabel = selectedConnectionType === 'home' ? 'Домашний Интернет' : 'Мобильный Интернет';
-
-  if (selectedCountry === 'other' || selectedCountry === 'w_other') {
-    const otherContainer = data ? (
-      data[selectedCountry]
-      || data[selectedCountry + '_countries']
-      || (selectedCountry === 'other' ? data.other_countries : data.w_other_countries)
-    ) : null;
-
-    let html = `<div class="card">`;
-    html += `<h2>${categoryTitle} — ${connLabel}</h2>`;
-
-    if (!otherContainer) {
-      html += `<div class="key-box empty">Рабочих ключей не найдено.</div></div>`;
-      container.innerHTML = html;
-      return;
-    }
-
-    const countryBlocks = [];
-
-    Object.entries(otherContainer).forEach(([cKey, cVal]) => {
-      if (!cVal) return;
-
-      const targetData = (cVal[selectedConnectionType]) ? cVal[selectedConnectionType] : cVal;
-
-      const workingCount = targetData.total_working || 0;
-      const topList = targetData.top10 || targetData.top5 || [];
-
-      if (workingCount > 0 || topList.length > 0) {
-        const countryName = cVal.name || targetData.name || cKey;
-        const countryFlag = cVal.flag || targetData.flag || getCountryFlag(cKey);
-
-        countryBlocks.push({
-          name: countryName,
-          flag: countryFlag,
-          data: targetData,
-          working: workingCount
-        });
-      }
-    });
-
-    countryBlocks.sort((a, b) => b.working - a.working);
-
-    if (countryBlocks.length > 0) {
-      html += `<div class="top5" style="margin-top:15px;">`;
-      html += countryBlocks.map(item => renderCountryBlock(item.name, item.flag, item.data)).join('');
-      html += `</div>`;
-    } else {
-      html += `<div class="key-box empty">Рабочих ключей для выбранного типа подключения не найдено.</div>`;
-    }
-
-    html += `</div>`;
-    container.innerHTML = html;
-    return;
-  }
 
   if (!data || !data[selectedCountry]) {
     container.innerHTML = `<div class="card"><h2>${categoryTitle} — ${connLabel}</h2><div class="key-box empty">Загрузка данных или ключи не найдены...</div></div>`;
@@ -452,15 +402,7 @@ function renderActiveCard() {
   const topList = targetData ? (targetData.top10 || targetData.top5 || []) : [];
   if (topList.length > 0) {
     html += `<div class="top5"><h3>ТОП быстрых:</h3>`;
-    html += topList.map((k, i) => {
-      const provider = k.isp || k.host;
-      return `<div class="top5-item">` +
-        `<span class="host">${i + 1}. ${provider}:${k.port}</span>` +
-        `<span class="latency">${k.latency_ms} мс</span>` +
-        (k.first_seen ? `<span class="uptime">добавлен ${formatAddedTime(k.first_seen)}</span>` : '') +
-        `<button class="copy-small" onclick="copyText('${encodeKey(k.key)}', this)">копировать</button>` +
-        `</div>`;
-    }).join('');
+    html += topList.map((k, i) => renderKeyItemHTML(k, i)).join('');
     html += `</div>`;
   }
 
@@ -468,6 +410,7 @@ function renderActiveCard() {
   container.innerHTML = html;
 }
 
+// Вспомогательные UI функции
 function setupCollapsed(collapsedId, toggleId, labelId, emptyTabs) {
   const collapsed = document.getElementById(collapsedId);
   const toggle = document.getElementById(toggleId);
@@ -519,7 +462,6 @@ function formatAddedTime(firstSeen) {
     const d = new Date(cleanStr);
     if (isNaN(d.getTime())) return firstSeen;
 
-    // Перевод в московское время (UTC+3)
     const msk = new Date(d.getTime() + 3 * 60 * 60 * 1000);
     const day = String(msk.getUTCDate()).padStart(2, '0');
     const month = String(msk.getUTCMonth() + 1).padStart(2, '0');
