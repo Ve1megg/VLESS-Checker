@@ -1,5 +1,6 @@
 import re
 import atexit
+import ssl
 import requests
 import socket
 import time
@@ -8,6 +9,7 @@ import os
 from collections import defaultdict
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from urllib.parse import parse_qs, urlparse
 
 BLACK_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS.txt"
 BLACK_MOBILE_URL = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt"
@@ -57,39 +59,25 @@ def extract_first_seen_data(data):
     parse_node(data)
     return cache_map
 
-
 def load_cache_map():
     """
-    Загружает кэш из docs/cache_map.json.
-    Если файла нет, восстанавливает базу из существующего docs/keys.json.
+    Загружает first_seen только из docs/keys.json.
+    cache_map.json не читаем — он служит лишь временным артефактом прогона.
     """
     last_deleted = None
     cache_map = {}
 
-    # 1. Пробуем прочитать готовый cache_map.json
-    if os.path.exists(CACHE_FILE):
-        try:
-            with open(CACHE_FILE, "r", encoding="utf-8") as f:
-                cache_map = json.load(f)
-            print(f"Успешно загружен {CACHE_FILE} (записей: {len(cache_map)})")
-        except Exception as e:
-            print(f"Ошибка чтения {CACHE_FILE}: {e}")
-
-    # 2. Если cache_map еще нет, но есть keys.json — вытаскиваем историю оттуда
     if os.path.exists(KEYS_FILE):
         try:
             with open(KEYS_FILE, "r", encoding="utf-8") as f:
                 old_keys = json.load(f)
             last_deleted = old_keys.get("last_deleated_at") or old_keys.get("last_deleted_at")
-
-            if not cache_map:
-                cache_map = extract_first_seen_data(old_keys)
-                print(f"[LOG] Восстановлен cache_map из {KEYS_FILE} (записей: {len(cache_map)})")
+            cache_map = extract_first_seen_data(old_keys)
+            print(f"Загружено {len(cache_map)} записей first_seen из {KEYS_FILE}")
         except Exception as e:
-            print(f"[LOG ERROR] Ошибка чтения {KEYS_FILE}: {e}")
+            print(f"Ошибка чтения {KEYS_FILE}: {e}")
 
     return cache_map, last_deleted
-
 
 def save_cache_map(cache_map):
     """Сохраняет актуальную карту кэша в docs/cache_map.json"""
@@ -170,45 +158,83 @@ def filter_keys(keys, mode):
                     not any(kw in k.lower() for kw in COUNTRIES_ALL_KEYWORDS) and "russia" not in k.lower()]
     return keys
 
-
-def parse_host_port(key):
+def parse_vless_info(key):
     try:
-        without_scheme = key[len("vless://"):]
-        at_idx = without_scheme.rfind("@")
-        after_at = without_scheme[at_idx + 1:]
-        host_port = after_at.split("?")[0].split("#")[0]
-        if ":" in host_port:
-            host, port = host_port.rsplit(":", 1)
-            return host.strip("[]"), int(port)
-    except Exception:
-        pass
-    return None, None
+        if not key.startswith("vless://"):
+            return None, None, None, None, None
 
+        parsed = urlparse(key)
+        netloc = parsed.netloc
+        if "@" in netloc:
+            netloc = netloc.split("@", 1)[1]
+
+        if "]" in netloc:
+            host, port_str = netloc.rsplit("]", 1)
+            host = host.strip("[]")
+        elif ":" in netloc:
+            host, port_str = netloc.rsplit(":", 1)
+        else:
+            host = netloc
+            port_str = "443"
+
+        query_params = parse_qs(parsed.query)
+        sni = query_params.get("sni", [None])[0]
+        security = query_params.get("security", [None])[0]
+        pbk = query_params.get("pbk", [None])[0]
+
+        return host, int(port_str), sni, security, pbk
+    except Exception:
+        return None, None, None, None, None
 
 def test_key(key):
-    host, port = parse_host_port(key)
-    if not host:
+    host, port, sni, security, pbk = parse_vless_info(key)
+    if not host or not port:
         return None
+
+#Отсеиваем Reality без публичного ключа
+    if security == "reality" and not pbk:
+        return None
+
+    target_sni = sni or host
+
     try:
         infos = socket.getaddrinfo(host, port, socket.AF_UNSPEC, socket.SOCK_STREAM)
     except Exception:
         return None
+
     best = None
-    for (family, socktype, proto, canonname, sockaddr) in infos:
+    for family, socktype, proto, canonname, sockaddr in infos:
         start = time.time()
         try:
-            sock = socket.socket(family, socktype)
-            sock.settimeout(TEST_TIMEOUT)
-            result = sock.connect_ex(sockaddr)
-            sock.close()
+#Layer 4: TCP подключение
+            raw_sock = socket.socket(family, socktype)
+            raw_sock.settimeout(TEST_TIMEOUT)
+            raw_sock.connect(sockaddr)
+
+#Layer 6: TLS Handshake + SNI
+            if security in ("tls", "reality") or sni:
+                context = ssl.create_default_context()
+                context.check_hostname = False
+                context.verify_mode = ssl.CERT_NONE
+                sock = context.wrap_socket(raw_sock, server_hostname=target_sni)
+            else:
+                sock = raw_sock
+
             elapsed = round((time.time() - start) * 1000, 1)
-            if result == 0 and elapsed <= MAX_LATENCY_MS:
+            sock.close()
+
+            if elapsed <= MAX_LATENCY_MS:
                 if best is None or elapsed < best["latency_ms"]:
-                    best = {"key": key, "host": host, "port": port, "latency_ms": elapsed}
+                    best = {
+                        "key": key,
+                        "host": host,
+                        "port": port,
+                        "latency_ms": elapsed,
+                    }
         except Exception:
             pass
-    return best
 
+    return best
 
 def check_mode(keys, cache_map):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -240,11 +266,8 @@ def check_mode(keys, cache_map):
         "total": len(keys),
     }
 
-
 def main():
-    # Загружаем текущий кэш
     cache_map, old_last_deleted = load_cache_map()
-    initial_cache_size = len(cache_map)
 
     print("Загружаем BLACK (Домашний) ключи...")
     black_home_keys = fetch_keys(BLACK_URL)
@@ -340,8 +363,6 @@ def main():
 
     # Сохраняем обновленный cache_map.json
     save_cache_map(cache_map)
-
-    new_added = len(cache_map) - initial_cache_size
 
     def cleanup():
         if os.path.exists(CACHE_FILE):
