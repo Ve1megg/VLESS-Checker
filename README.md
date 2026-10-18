@@ -5,7 +5,7 @@
 🌐 **Сайт:** https://ve1megg.github.io/VLESS-Checker/
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=Ve1megg.VLESS-Checker)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=Ve1megg.VLESS-Checkeк)
 [![GitHub Stars](https://img.shields.io/github/stars/Ve1megg/VLESS-Checker.svg?style=social&label=Star)](https://github.com/Ve1megg/VLESS-Checker/stargazers)
 
 ---
