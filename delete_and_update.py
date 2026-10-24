@@ -1,8 +1,10 @@
 import asyncio
+import ssl
 import json
 import time
 from urllib.parse import urlparse
 from typing import Optional, Tuple, Any
+from urllib.parse import parse_qs
 
 MAX_WORKERS = 20
 TEST_TIMEOUT = 5
@@ -14,14 +16,13 @@ keys_file = "docs/keys.json"
 def parse_vless_target(vless_url: str) -> Tuple[Optional[str], Optional[int]]:
     try:
         if not vless_url.startswith("vless://"):
-            return None, None
+            return None, None, None, None, None
 
         parsed = urlparse(vless_url)
         netloc = parsed.netloc
 
         if "@" in netloc:
-            netloc = netloc.split("@")[-1]
-
+            netloc = netloc.split("@", 1)[1]
         if "]:" in netloc:
             host, port_str = netloc.rsplit(":", 1)
             host = host.strip("[]")
@@ -31,26 +32,37 @@ def parse_vless_target(vless_url: str) -> Tuple[Optional[str], Optional[int]]:
             host = netloc
             port_str = "443"
 
+        query_params = parse_qs(parsed.query)
+        sni = query_params.get("sni", None)[0] or query_params.get("host", None)[0]
+        security = query_params.get("security", None)[0]
+        pbk = query_params.get("pbk", None)[0]
+
         return host, int(port_str)
     except Exception:
-        return None, None
-
+        return None, None, None, None, None
 
 async def check_key_object(key_obj: dict, semaphore: asyncio.Semaphore) -> Optional[dict]:
     vless_url = key_obj.get("key", "")
-    host = key_obj.get("host")
-    port = key_obj.get("port")
-
-    if not host or not port:
-        host, port = parse_vless_target(vless_url)
+    host, port, sni, security, pbk = parse_vless_target(vless_url)
 
     if not host or not port:
         return None
 
+    if security == "reality" and not pbk:
+        return None
+
+    target_sni = sni or host
+
     async with semaphore:
         start_time = time.monotonic()
         try:
-            conn = asyncio.open_connection(host, port)
+            ssl_ctx = None
+            if security in ("tls", "reality") or sni:
+                ssl_ctx = ssl.create_default_context()
+                ssl_ctx.check_hostname = False
+                ssl_ctx.verify_mode = ssl.CERT_NONE
+
+            conn = asyncio.open_connection(host, port, ssl=ssl_ctx, server_hostname=target_sni)
             _, writer = await asyncio.wait_for(conn, timeout=TEST_TIMEOUT)
 
             latency = round((time.monotonic() - start_time) * 1000, 1)
