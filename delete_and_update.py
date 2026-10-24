@@ -37,7 +37,7 @@ def parse_vless_target(vless_url: str) -> Tuple[Optional[str], Optional[int]]:
         security = query_params.get("security", None)[0]
         pbk = query_params.get("pbk", None)[0]
 
-        return host, int(port_str)
+        return host, int(port_str), sni, security, pbk
     except Exception:
         return None, None, None, None, None
 
