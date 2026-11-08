@@ -36,7 +36,7 @@
           "key": "vless://3c821552-97f0-42d1-bb1a-adc67a637d9e@yoni.dobryak.online:443?encryption=none&security=reality&type=tcp&sni=ebay.de&fp=chrome&pbk=r0DQs82BcdfowCDyVJ05lRNuMarpjEJfl5a14La6ZW4&flow=xtls-rprx-vision#%F0%9F%87%A9%F0%9F%87%AA%20Germany%2C%20Frankfurt%20am%20Main%20%7C%20%5BBL%5D",
           "host": "yoni.dobryak.online",
           "port": 443,
-          "latency_ms": 351.2,
+          "latency_ms": 532.5,
           "first_seen": "2026-11-08T04:08:16Z",
           "isp": "Oliver Horscht is trading as \"SYNLINQ\""
         }
@@ -142,27 +142,10 @@
     "Singapore": {
       "flag": "🇸🇬",
       "home": {
-        "top10": [
-          {
-            "key": "vless://6ba2eac6-0ec9-44ca-a42b-a8e23aafb530@3.0.70.13:1114?encryption=none&flow=xtls-rprx-vision&pbk=WfkCF0eEuIoO0MyJsKOddU89QrTzCZ4y2dzCJbH99CQ&security=reality&sid=79a1e14b&sni=yahoo.com&type=tcp&fp=chrome#%F0%9F%87%B8%F0%9F%87%AC%20Singapore%2C%20Singapore%20%7C%20%5BBL%5D",
-            "host": "3.0.70.13",
-            "port": 1114,
-            "latency_ms": 634.4,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          },
-          {
-            "key": "vless://6ba2eac6-0ec9-44ca-a42b-a8e23aafb530@3.0.70.13:1114?encryption=none&flow=xtls-rprx-vision&pbk=WfkCF0eEuIoO0MyJsKOddU89QrTzCZ4y2dzCJbH99CQ&security=reality&sid=79a1e14b&sni=yahoo.com&type=tcp&fp=ios#%F0%9F%87%B8%F0%9F%87%AC%20Singapore%2C%20Singapore%20%7C%20%5BBL%5D",
-            "host": "3.0.70.13",
-            "port": 1114,
-            "latency_ms": 708.7,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          }
-        ],
-        "total_working": 2,
-        "total": 2,
-        "best": "vless://6ba2eac6-0ec9-44ca-a42b-a8e23aafb530@3.0.70.13:1114?encryption=none&flow=xtls-rprx-vision&pbk=WfkCF0eEuIoO0MyJsKOddU89QrTzCZ4y2dzCJbH99CQ&security=reality&sid=79a1e14b&sni=yahoo.com&type=tcp&fp=chrome#%F0%9F%87%B8%F0%9F%87%AC%20Singapore%2C%20Singapore%20%7C%20%5BBL%5D"
+        "top10": [],
+        "total_working": 0,
+        "total": 0,
+        "best": null
       },
       "mobile": {
         "top10": [],
@@ -204,51 +187,10 @@
     "Hong Kong": {
       "flag": "🇭🇰",
       "home": {
-        "top10": [
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:13212?&security=reality&flow=xtls-rprx-vision&pbk=4VguZbm-S2NkLpi7gLDsQMv2eDXP2LucxsvTiEt98yY&sid=961f7127a015ba&fp=edge&sni=v1-dy.ixigua.com&type=tcp&headerType=none&host=v1-dy.ixigua.com&path=%2F#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-3-z.473221.xyz",
-            "port": 13212,
-            "latency_ms": 476.7,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          },
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:13212?security=reality&encryption=none&type=tcp&flow=xtls-rprx-vision&pbk=4VguZbm-S2NkLpi7gLDsQMv2eDXP2LucxsvTiEt98yY&sid=961f7127a015ba&sni=v1-dy.ixigua.com&servername=v1-dy.ixigua.com&spx=%2F&fp=chrome#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-3-z.473221.xyz",
-            "port": 13212,
-            "latency_ms": 480.8,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          },
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:13212?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=4VguZbm-S2NkLpi7gLDsQMv2eDXP2LucxsvTiEt98yY&sid=961f7127a015ba&sni=v1-dy.ixigua.com&host=v1-dy.ixigua.com#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-3-z.473221.xyz",
-            "port": 13212,
-            "latency_ms": 483.7,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          },
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:13212?security=reality&type=tcp&sni=v1-dy.ixigua.com&flow=xtls-rprx-vision&pbk=4VguZbm-S2NkLpi7gLDsQMv2eDXP2LucxsvTiEt98yY&sid=961f7127a015ba&allowInsecure=1&fp=ios#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-3-z.473221.xyz",
-            "port": 13212,
-            "latency_ms": 487.4,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          },
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:13212?security=reality&type=tcp&sni=v1-dy.ixigua.com&flow=xtls-rprx-vision&fp=chrome&pbk=4VguZbm-S2NkLpi7gLDsQMv2eDXP2LucxsvTiEt98yY&sid=961f7127a015ba#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-3-z.473221.xyz",
-            "port": 13212,
-            "latency_ms": 488.0,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          }
-        ],
-        "total_working": 5,
-        "total": 5,
-        "best": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-3-z.473221.xyz:13212?&security=reality&flow=xtls-rprx-vision&pbk=4VguZbm-S2NkLpi7gLDsQMv2eDXP2LucxsvTiEt98yY&sid=961f7127a015ba&fp=edge&sni=v1-dy.ixigua.com&type=tcp&headerType=none&host=v1-dy.ixigua.com&path=%2F#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
+        "top10": [],
+        "total_working": 0,
+        "total": 0,
+        "best": null
       },
       "mobile": {
         "top10": [],
@@ -260,19 +202,10 @@
     "Japan": {
       "flag": "🇯🇵",
       "home": {
-        "top10": [
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:34761?flow=xtls-rprx-vision&headerType=none&host=v1-dy.ixigua.com&path=%2F&pbk=h1l2o1aPlR4WewN4YxtTYugJucyxhjvOHbfEHCHPEiU&security=reality&sid=867357bc81a4&sni=v1-dy.ixigua.com&type=tcp&fp=chrome#%F0%9F%87%AF%F0%9F%87%B5%20Japan%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-1-x.473221.xyz",
-            "port": 34761,
-            "latency_ms": 499.3,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          }
-        ],
-        "total_working": 1,
-        "total": 1,
-        "best": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:34761?flow=xtls-rprx-vision&headerType=none&host=v1-dy.ixigua.com&path=%2F&pbk=h1l2o1aPlR4WewN4YxtTYugJucyxhjvOHbfEHCHPEiU&security=reality&sid=867357bc81a4&sni=v1-dy.ixigua.com&type=tcp&fp=chrome#%F0%9F%87%AF%F0%9F%87%B5%20Japan%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
+        "top10": [],
+        "total_working": 0,
+        "total": 0,
+        "best": null
       },
       "mobile": {
         "top10": [],
@@ -316,25 +249,17 @@
       "home": {
         "top10": [
           {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:43116?security=reality&encryption=none&type=tcp&flow=xtls-rprx-vision&pbk=rLU2xJNZPFvtHy49MygD-nta6OpJEbjarjAZ5vHwpVE&sid=29ad689280e2f0ec&sni=v1-dy.ixigua.com&servername=v1-dy.ixigua.com&spx=%2F&fp=chrome#%F0%9F%87%B2%F0%9F%87%BD%20Mexico%2C%20La%20Ca%C3%B1ada%20%7C%20%5BBL%5D",
-            "host": "dddz-1-x.473221.xyz",
-            "port": 43116,
-            "latency_ms": 897.6,
-            "first_seen": "2026-11-07T23:22:50Z",
-            "isp": "Неизвестен"
-          },
-          {
             "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:43116?security=reality&encryption=none&type=tcp&flow=xtls-rprx-vision&pbk=rLU2xJNZPFvtHy49MygD-nta6OpJEbjarjAZ5vHwpVE&sid=29ad689280e2f0ec&sni=v1-dy.ixigua.com&servername=v1-dy.ixigua.com&spx=%2F&fp=ios#%F0%9F%87%B2%F0%9F%87%BD%20Mexico%2C%20La%20Ca%C3%B1ada%20%7C%20%5BBL%5D",
             "host": "dddz-1-x.473221.xyz",
             "port": 43116,
-            "latency_ms": 943.8,
+            "latency_ms": 1027.7,
             "first_seen": "2026-11-08T04:08:17Z",
             "isp": "Неизвестен"
           }
         ],
-        "total_working": 2,
-        "total": 2,
-        "best": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:43116?security=reality&encryption=none&type=tcp&flow=xtls-rprx-vision&pbk=rLU2xJNZPFvtHy49MygD-nta6OpJEbjarjAZ5vHwpVE&sid=29ad689280e2f0ec&sni=v1-dy.ixigua.com&servername=v1-dy.ixigua.com&spx=%2F&fp=chrome#%F0%9F%87%B2%F0%9F%87%BD%20Mexico%2C%20La%20Ca%C3%B1ada%20%7C%20%5BBL%5D"
+        "total_working": 1,
+        "total": 1,
+        "best": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:43116?security=reality&encryption=none&type=tcp&flow=xtls-rprx-vision&pbk=rLU2xJNZPFvtHy49MygD-nta6OpJEbjarjAZ5vHwpVE&sid=29ad689280e2f0ec&sni=v1-dy.ixigua.com&servername=v1-dy.ixigua.com&spx=%2F&fp=ios#%F0%9F%87%B2%F0%9F%87%BD%20Mexico%2C%20La%20Ca%C3%B1ada%20%7C%20%5BBL%5D"
       },
       "mobile": {
         "top10": [],
@@ -361,19 +286,10 @@
     "Israel": {
       "flag": "🇮🇱",
       "home": {
-        "top10": [
-          {
-            "key": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:43117?encryption=none&type=tcp&security=reality&pbk=sx45rPTYcCjQaHYudo1gfNFWYN4mQ4SCwGHfdGU-Hwc&sid=1f34079b44529536&flow=xtls-rprx-vision&sni=v1-dy.ixigua.com&fp=edge#%F0%9F%87%AE%F0%9F%87%B1%20Israel%2C%20Jerusalem%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D",
-            "host": "dddz-1-x.473221.xyz",
-            "port": 43117,
-            "latency_ms": 871.7,
-            "first_seen": "2026-11-08T04:08:17Z",
-            "isp": "Неизвестен"
-          }
-        ],
-        "total_working": 1,
-        "total": 1,
-        "best": "vless://65ec84f5-0dd4-4582-8b4f-592e50b22116@dddz-1-x.473221.xyz:43117?encryption=none&type=tcp&security=reality&pbk=sx45rPTYcCjQaHYudo1gfNFWYN4mQ4SCwGHfdGU-Hwc&sid=1f34079b44529536&flow=xtls-rprx-vision&sni=v1-dy.ixigua.com&fp=edge#%F0%9F%87%AE%F0%9F%87%B1%20Israel%2C%20Jerusalem%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D"
+        "top10": [],
+        "total_working": 0,
+        "total": 0,
+        "best": null
       },
       "mobile": {
         "top10": [],
@@ -471,48 +387,32 @@
     "home": {
       "top10": [
         {
-          "key": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@185.86.145.106:8445?type=raw&security=reality&encryption=none&sni=passport.yandex.ru&fp=chrome&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&spx=%2F&flow=xtls-rprx-vision&headerType=none#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK",
-          "host": "185.86.145.106",
-          "port": 8445,
-          "latency_ms": 692.1,
-          "first_seen": "2026-11-08T04:08:55Z",
-          "isp": "Неизвестен"
-        },
-        {
           "key": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@rapira-dof.whitenw.net:8445?encryption=none&flow=xtls-rprx-vision&headerType=&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&security=reality&sni=passport.yandex.ru&spx=%2F&type=tcp&fp=chrome#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK",
           "host": "rapira-dof.whitenw.net",
           "port": 8445,
-          "latency_ms": 843.8,
+          "latency_ms": 567.7,
           "first_seen": "2026-11-07T23:22:59Z",
           "isp": "Неизвестен"
         }
       ],
-      "total_working": 2,
-      "total": 2,
-      "best": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@185.86.145.106:8445?type=raw&security=reality&encryption=none&sni=passport.yandex.ru&fp=chrome&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&spx=%2F&flow=xtls-rprx-vision&headerType=none#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK"
+      "total_working": 1,
+      "total": 1,
+      "best": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@rapira-dof.whitenw.net:8445?encryption=none&flow=xtls-rprx-vision&headerType=&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&security=reality&sni=passport.yandex.ru&spx=%2F&type=tcp&fp=chrome#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK"
     },
     "mobile": {
       "top10": [
         {
-          "key": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@185.86.145.106:8445?type=raw&security=reality&encryption=none&sni=passport.yandex.ru&fp=chrome&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&spx=%2F&flow=xtls-rprx-vision&headerType=none#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK",
-          "host": "185.86.145.106",
-          "port": 8445,
-          "latency_ms": 701.0,
-          "first_seen": "2026-11-08T04:08:55Z",
-          "isp": "Неизвестен"
-        },
-        {
           "key": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@rapira-dof.whitenw.net:8445?encryption=none&flow=xtls-rprx-vision&headerType=&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&security=reality&sni=passport.yandex.ru&spx=%2F&type=tcp&fp=chrome#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK",
           "host": "rapira-dof.whitenw.net",
           "port": 8445,
-          "latency_ms": 842.3,
+          "latency_ms": 566.5,
           "first_seen": "2026-11-07T23:22:59Z",
           "isp": "Неизвестен"
         }
       ],
-      "total_working": 2,
-      "total": 2,
-      "best": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@185.86.145.106:8445?type=raw&security=reality&encryption=none&sni=passport.yandex.ru&fp=chrome&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&spx=%2F&flow=xtls-rprx-vision&headerType=none#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK"
+      "total_working": 1,
+      "total": 1,
+      "best": "vless://cd138479-c87a-4d4c-b6ea-4beeb6ef2b47@rapira-dof.whitenw.net:8445?encryption=none&flow=xtls-rprx-vision&headerType=&pbk=l06r0clkHjHk7HRGpkDBJwZ1JJscSqfwHUQOrV3v3hQ&security=reality&sni=passport.yandex.ru&spx=%2F&type=tcp&fp=chrome#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%AA%F0%9F%87%AA%20%F0%9F%87%B7%F0%9F%87%BA%20%5B%2ACIDR%5D%20VK"
     }
   },
   "russia": {
@@ -529,5 +429,5 @@
       "best": null
     }
   },
-  "last_deleted_at": "2026-11-08 05:24 UTC"
+  "last_deleted_at": "2026-11-08 12:07 UTC"
 }
